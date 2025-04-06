@@ -1,0 +1,10 @@
+.loading {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* transformで要素の半分を左上に移動 ※50%から要素を表示すると実際は少し中央からズレるため */
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
