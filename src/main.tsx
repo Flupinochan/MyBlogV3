@@ -61,7 +61,8 @@ const LazyApp = lazy(() => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(import('./App.tsx'));
-    }, 3000); // 2秒待機
+    }, 3000);
+    // 2秒待機
   });
 });
 
@@ -70,12 +71,13 @@ const LazyApp = lazy(() => {
 // / にアクセスすれば、 Homeが表示
 // /tool にアクセスすれば、Toolが表示
 // /abcde などの存在しないパスの場合は、Homeにリダイレクト
+// errorElementでエラー時のページ遷移設定
 const router = createBrowserRouter([
   {
     path: "/", element: <LazyApp />,
     children: [
       { index: true, element: <Home /> },
-      { path: "tool", element: <Tool /> },
+      { path: "tool", element: <Tool />, errorElement: <Navigate to="/" replace /> },
       { path: "*", element: <Navigate to="/" replace /> }
     ]
   },
