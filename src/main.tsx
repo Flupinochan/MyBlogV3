@@ -1,12 +1,15 @@
-import React, { Suspense, lazy } from "react";
+import React, { Children, Suspense, lazy } from "react";
+import { createBrowserRouter, Navigate, RouterProvider, } from "react-router-dom";
 import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
-import "./index.css";
-import '@mantine/core/styles.css';
 import { Amplify } from "aws-amplify";
 import outputs from "../amplify_outputs.json";
-import { createTheme, MantineProvider, rem } from '@mantine/core';
+import App from "./App.tsx";
 import Loading from "./layouts/loading/Loading.tsx";
+import { createTheme, MantineProvider, rem } from '@mantine/core';
+import '@mantine/core/styles.css';
+import "./index.css";
+import Home from "./features/home/Home.tsx";
+import Tool from "./features/Tool/Tool.tsx";
 
 const theme = createTheme({
   // spacing:
@@ -30,7 +33,6 @@ const theme = createTheme({
     dark: ["#ECEDEE", "#CCCECF", "#ACAEB1", "#8C8F92", "#6D6F73", "#4D5054", "#2D3036", "#0d1117", "#111316", "#141414"]
   },
   autoContrast: true,
-  fontFamily: 'Montserrat, sans-serif',
   focusRing: "auto",
   defaultRadius: "xs",
   cursorType: "pointer",
@@ -63,12 +65,27 @@ const LazyApp = lazy(() => {
   });
 });
 
+// React Router Dom (React Routerはサーバーサイド用)
+// index: trueがOutletに表示されるデフォルトのページ
+// / にアクセスすれば、 Homeが表示
+// /tool にアクセスすれば、Toolが表示
+// /abcde などの存在しないパスの場合は、Homeにリダイレクト
+const router = createBrowserRouter([
+  {
+    path: "/", element: <LazyApp />,
+    children: [
+      { index: true, element: <Home /> },
+      { path: "tool", element: <Tool /> },
+      { path: "*", element: <Navigate to="/" replace /> }
+    ]
+  },
+]);
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <MantineProvider theme={theme} defaultColorScheme="dark">
     <React.StrictMode>
       <Suspense fallback={<Loading />}>
-        {/* <App /> */}
-        <LazyApp />
+        <RouterProvider router={router} />
       </Suspense>
     </React.StrictMode>
   </MantineProvider>
