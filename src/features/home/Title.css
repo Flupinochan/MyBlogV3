@@ -1,0 +1,38 @@
+.title-grid {
+  flex: 1;
+  padding-top: clamp(0.625rem, -2.955rem + 11.46vw, 5rem);
+  padding-left: clamp(0.313rem, -1.478rem + 5.73vw, 2.5rem);
+  padding-right: clamp(0.313rem, -1.478rem + 5.73vw, 2.5rem);
+}
+
+/* 768px以下でカラムの順番を入れ替え */
+@media (max-width: 768px) {
+  .first-col {
+    order: 2;
+  }
+
+  .second-col {
+    order: 1;
+  }
+
+  .mini-text {
+    display: none;
+  }
+
+  .title-text {
+    padding-top: 2rem;
+  }
+
+  .button {
+    padding-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.square {
+  margin-right: 0.8rem;
+  height: 100%;
+  width: 1.2rem;
+  border: 0.1rem solid var(--bg-color);
+}

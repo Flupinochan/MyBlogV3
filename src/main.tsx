@@ -1,11 +1,11 @@
-import React, { Children, Suspense, lazy } from "react";
+import React, { Suspense, lazy } from "react";
 import { createBrowserRouter, Navigate, RouterProvider, } from "react-router-dom";
 import ReactDOM from "react-dom/client";
 import { Amplify } from "aws-amplify";
 import outputs from "../amplify_outputs.json";
 import App from "./App.tsx";
 import Loading from "./layouts/loading/Loading.tsx";
-import { createTheme, MantineProvider, rem } from '@mantine/core';
+import { createTheme, MantineProvider } from '@mantine/core';
 import '@mantine/core/styles.css';
 import "./index.css";
 import Home from "./features/home/Home.tsx";
