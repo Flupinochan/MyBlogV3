@@ -1,4 +1,7 @@
+@import url("../../index.css");
+
 .header {
+  padding-top: var(--html-margin);
   display: flex;
   justify-content: center;
   transition: transform 300ms ease-in-out;

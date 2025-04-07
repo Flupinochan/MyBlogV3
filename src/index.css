@@ -6,6 +6,10 @@
   --bg-color: #7828C8;
 }
 
+.purple {
+  color: var(--bg-color);
+}
+
 /* 全ての要素のデフォルトの余白、スタイルをリセット */
 * {
   margin: 0;
@@ -15,10 +19,21 @@
 }
 
 html {
-  margin: var(--html-margin);
-  /* 100vhから余白を除く */
-  height: calc(100vh - (var(--html-margin) * 2));
+  margin-right: var(--html-margin);
+  margin-left: var(--html-margin);
+  height: 100vh;
   /* スクロールバー非表示 */
-  overflow: hidden;
+  /* overflow: hidden; */
   font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Meiryo", "sans-serif";
+  letter-spacing: 0.05rem;
+}
+
+h1 {
+  font-size: clamp(2rem, 1.182rem + 2.62vw, 3rem);
+  line-height: clamp(2.5rem, 1.273rem + 3.93vw, 4rem);
+}
+
+p {
+  font-size: clamp(0.875rem, 0.568rem + 0.98vw, 1.25rem);
+  line-height: clamp(1.5rem, 1.091rem + 1.31vw, 2rem);
 }

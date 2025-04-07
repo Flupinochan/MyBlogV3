@@ -4,7 +4,11 @@
   left: 50%;
   /* transformで要素の半分を左上に移動 ※50%から要素を表示すると実際は少し中央からズレるため */
   transform: translate(-50%, -50%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+}
+
+.loading-text {
+  padding-left: clamp(1rem, 0.182rem + 2.62vw, 2rem);
+  color: #D2CD39;
+  font-weight: bold;
+  font-size: clamp(1.2rem, 0.955rem + 0.79vw, 1.5rem);
 }

@@ -12,22 +12,6 @@ import Home from "./features/home/Home.tsx";
 import Tool from "./features/Tool/Tool.tsx";
 
 const theme = createTheme({
-  // spacing:
-  // lineHeights:
-  fontSizes: {
-    xs: rem(10),
-    sm: rem(11),
-    md: rem(14),
-    lg: rem(16),
-    xl: rem(20),
-  },
-  lineHeights: {
-    xs: '1.4',
-    sm: '1.45',
-    md: '1.55',
-    lg: '1.6',
-    xl: '1.65',
-  },
   primaryColor: "violet",
   colors: {
     dark: ["#ECEDEE", "#CCCECF", "#ACAEB1", "#8C8F92", "#6D6F73", "#4D5054", "#2D3036", "#0d1117", "#111316", "#141414"]
@@ -37,13 +21,6 @@ const theme = createTheme({
   defaultRadius: "xs",
   cursorType: "pointer",
   primaryShade: 9,
-  headings: {
-    sizes: {
-      h1: {
-        fontSize: rem(36)
-      }
-    }
-  },
   components: {
     Button: {
       defaultProps: {
