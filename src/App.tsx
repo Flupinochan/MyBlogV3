@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Header from "./layouts/header/Header";
+import Footer from "./layouts/footer/Footer";
 import Menu from "./layouts/menu/Menu";
 import "./App.css";
 
@@ -13,7 +14,7 @@ function App() {
       </div>
       {/* Outletにルーティングされたページが表示 */}
       <Outlet />
-      <footer>footer</footer>
+      <Footer />
     </>
   );
 }

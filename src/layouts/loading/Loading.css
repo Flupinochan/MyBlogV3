@@ -7,8 +7,9 @@
 }
 
 .loading-text {
-  padding-left: clamp(1rem, 0.182rem + 2.62vw, 2rem);
   color: #D2CD39;
   font-weight: bold;
   font-size: clamp(1.2rem, 0.955rem + 0.79vw, 1.5rem);
+  margin-left: clamp(1rem, 0.182rem + 2.62vw, 2rem);
+  margin-right: 0.5rem;
 }

@@ -39,6 +39,7 @@ html {
   /* overflow: hidden; */
   font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Meiryo", "sans-serif";
   letter-spacing: 0.05rem;
+  overflow-x: hidden;
 }
 
 h1 {
