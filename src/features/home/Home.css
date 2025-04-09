@@ -2,3 +2,13 @@
   display: flex;
   width: 100%;
 }
+
+.spacer {
+  margin: 3rem;
+}
+
+@media (max-width: 768px) {
+  .spacer {
+    margin: 0.4rem;
+  }
+}

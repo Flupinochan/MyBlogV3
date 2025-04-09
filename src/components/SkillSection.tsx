@@ -18,7 +18,7 @@ const SkillSection: React.FC<SkillSectionProps> = (props) => {
       </Box>
       <Stack className="stack">
         <h3>{props.title}</h3>
-        <Flex gap={20} wrap={"wrap"}>
+        <Flex wrap={"wrap"} className="badge-gap">
           {props.badgesText.map((text, index) => (
             <p key={index} className="badge" style={{ backgroundColor: props.badgeColor }}>
               {text}

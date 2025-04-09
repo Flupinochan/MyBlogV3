@@ -1,5 +1,5 @@
 .section {
-  margin: clamp(2.25rem, -2.455rem + 15.06vw, 8rem) clamp(0rem, -3.273rem + 10.47vw, 3rem);
+  margin: 0px;
   padding: clamp(1.5rem, -0.546rem + 6.55vw, 4rem) clamp(1.5rem, -3.001rem + 14.4vw, 6rem);
   background-color: var(--section-bg-color);
   border: 0.1rem solid var(--bg-color);

@@ -6,6 +6,10 @@
   flex-wrap: wrap;
 }
 
+.badge-gap {
+  gap: clamp(0.625rem, 0.114rem + 1.64vw, 1.25rem);
+}
+
 .stack {
   align-items: center;
 }

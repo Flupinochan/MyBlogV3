@@ -10,6 +10,7 @@ import '@mantine/core/styles.css';
 import "./index.css";
 import Home from "./features/home/Home.tsx";
 import Tool from "./features/Tool/Tool.tsx";
+import Error from "./layouts/error/Error.tsx";
 
 const theme = createTheme({
   primaryColor: "violet",
@@ -53,7 +54,7 @@ const router = createBrowserRouter([
   {
     path: "/", element: <LazyApp />,
     children: [
-      { index: true, element: <Home /> },
+      { index: true, element: <Home />, errorElement: <Error /> },
       { path: "tool", element: <Tool />, errorElement: <Navigate to="/" replace /> },
       { path: "*", element: <Navigate to="/" replace /> }
     ]

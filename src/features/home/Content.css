@@ -1,0 +1,15 @@
+.grid-space {
+  padding-right: 1rem;
+}
+
+.grid-space2 {
+  padding-left: 1rem;
+}
+
+@media (max-width: 768px) {
+  .grid-space {
+    padding-bottom: 4rem;
+    padding-right: 0rem;
+    padding-left: 0rem
+  }
+}

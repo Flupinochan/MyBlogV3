@@ -32,8 +32,7 @@
 }
 
 html {
-  margin-right: var(--html-margin);
-  margin-left: var(--html-margin);
+  margin: 0rem var(--html-margin);
   height: 100vh;
   /* スクロールバー非表示 */
   /* overflow: hidden; */
