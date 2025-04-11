@@ -1,6 +1,6 @@
 import skillsStyles from "./Skills.module.css";
 import aboutMeStyles from "./AboutMe.module.css";
-import AboutMeSection from "../../components/AboutMeSection";
+import AboutMeSection from "./components/AboutMeSection";
 import H2 from "../../components/H2";
 
 const AboutMe = () => {

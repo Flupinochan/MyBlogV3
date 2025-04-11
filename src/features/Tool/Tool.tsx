@@ -1,6 +1,10 @@
+import MySwaggerUi from "./components/swagger/MySwaggerUi"
+
 const Tool = () => {
   return (
-    <div>Tool</div>
+    <section>
+      <MySwaggerUi />
+    </section>
   )
 }
 

@@ -1,6 +1,6 @@
 import { Grid, GridCol, Stack } from "@mantine/core";
 import H2 from "../../components/H2";
-import ContentSection from "../../components/ContentSection";
+import ContentSection from "./components/ContentSection";
 import blogImage from "../../assets/blog_img.jpg";
 import youtubeImage from "../../assets/youtube_img.jpg";
 import contentStyles from "./Content.module.css";

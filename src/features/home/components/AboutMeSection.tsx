@@ -1,4 +1,4 @@
-import H4 from "./H4"
+import H4 from "../../../components/H4"
 import styles from "./AboutMeSection.module.css"
 import React from "react"
 

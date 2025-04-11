@@ -1,6 +1,6 @@
 import { Anchor, Image, Space, Stack } from "@mantine/core"
-import styles from "./Button.module.css";
-import H4 from "./H4"
+import styles from "../../../components/Button.module.css";
+import H4 from "../../../components/H4"
 
 interface ContentSectiontionProps {
   title: string;

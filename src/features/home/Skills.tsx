@@ -1,6 +1,6 @@
 import { Stack } from "@mantine/core"
 import H2 from "../../components/H2";
-import SkillSection from "../../components/SkillSection";
+import SkillSection from "./components/SkillSection";
 import TypeScriptSvg from "../../components/svg/TypeScriptSvg";
 import PythonSvg from "../../components/svg/PythonSvg";
 import AwsSvg from "../../components/svg/AwsSvg";
