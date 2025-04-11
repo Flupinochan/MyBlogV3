@@ -1,5 +1,6 @@
-import { Anchor, Image, Stack } from "@mantine/core"
-import "./ContentSection.css"
+import { Anchor, Image, Space, Stack } from "@mantine/core"
+import styles from "./Button.module.css";
+import H4 from "./H4"
 
 interface ContentSectiontionProps {
   title: string;
@@ -11,13 +12,17 @@ interface ContentSectiontionProps {
 
 const ContentSection: React.FC<ContentSectiontionProps> = (props) => {
   return (
-    <Stack gap={20}>
-      <h3>{props.title}</h3>
-      <Image src={props.image} alt={props.title + " image"} />
-      <p>{props.date}</p>
-      <p>{props.description}</p>
-      <Anchor unstyled className="btn" href={props.url} target="_blank" rel="noopener noreferrer">{"Go " + props.title}</Anchor>
-    </Stack>
+    <section>
+      <Space h="sm" />
+      <H4 text={props.title} />
+      <Space h="xl" />
+      <Stack gap={20}>
+        <Image src={props.image} alt={props.title + " image"} />
+        <p>{props.date}</p>
+        <p>{props.description}</p>
+        <Anchor unstyled className={styles.btn} href={props.url} target="_blank" rel="noopener noreferrer">{"Go " + props.title}</Anchor>
+      </Stack>
+    </section>
   )
 }
 

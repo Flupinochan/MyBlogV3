@@ -1,5 +1,5 @@
 import { Box, Flex, Stack } from "@mantine/core"
-import "./SkillSection.css";
+import styles from "./SkillSection.module.css"
 
 interface SkillSectionProps {
   svg: React.ReactNode;
@@ -12,15 +12,15 @@ interface SkillSectionProps {
 
 const SkillSection: React.FC<SkillSectionProps> = (props) => {
   return (
-    <Flex align={"center"} className="section-border" style={{ color: `${props.textColor}`, border: `0.1rem solid ${props.textColor}` }} >
-      <Box className="svg-padding">
+    <Flex align={"center"} className={styles.sectionBorder} style={{ color: `${props.textColor}`, border: `0.1rem solid ${props.textColor}` }} >
+      <Box className={styles.svgPadding}>
         {props.svg}
       </Box>
-      <Stack className="stack">
+      <Stack className={styles.stack}>
         <h3>{props.title}</h3>
-        <Flex wrap={"wrap"} className="badge-gap">
+        <Flex wrap={"wrap"} className={styles.badgeGap}>
           {props.badgesText.map((text, index) => (
-            <p key={index} className="badge" style={{ backgroundColor: props.badgeColor }}>
+            <p key={index} className={styles.badge} style={{ backgroundColor: props.badgeColor }}>
               {text}
             </p>
           ))}

@@ -36,30 +36,42 @@ html {
   height: 100vh;
   /* スクロールバー非表示 */
   /* overflow: hidden; */
-  font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Meiryo", "sans-serif";
+  /* フォントは、mantine uiで設定可能 */
+  /* font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Meiryo", "sans-serif"; */
   letter-spacing: 0.05rem;
   overflow-x: hidden;
 }
 
 h1 {
   font-size: clamp(2rem, 1.182rem + 2.62vw, 3rem);
-  line-height: clamp(2.5rem, 1.273rem + 3.93vw, 4rem);
-  letter-spacing: 0.1rem;
 }
 
 h2 {
-  font-size: clamp(1.5rem, 1.182rem + 2.62vw, 2.5rem);
+  font-size: clamp(1.75rem, 1.341rem + 1.31vw, 2.25rem);
   font-weight: 400;
-  letter-spacing: 0.1rem;
 }
 
 h3 {
-  font-size: clamp(1rem, 1.182rem + 2.62vw, 2rem);
+  font-size: clamp(1.5rem, 1.091rem + 1.31vw, 2rem);
   font-weight: 400;
-  letter-spacing: 0.1rem;
+}
+
+h4 {
+  font-size: clamp(1.25rem, 0.841rem + 1.31vw, 1.75rem);
+  font-weight: 400;
+}
+
+h5 {
+  font-size: clamp(1.125rem, 0.818rem + 0.98vw, 1.5rem);
+  font-weight: 400;
+}
+
+h6 {
+  font-size: clamp(1rem, 0.795rem + 0.65vw, 1.25rem);
+  font-weight: 400;
 }
 
 p {
-  font-size: clamp(0.875rem, 0.568rem + 0.98vw, 1.25rem);
+  font-size: clamp(1rem, 0.898rem + 0.33vw, 1.125rem);
   line-height: clamp(1.5rem, 1.091rem + 1.31vw, 2rem);
 }

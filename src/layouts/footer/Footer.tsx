@@ -1,10 +1,10 @@
 import { Flex } from "@mantine/core";
-import "./Footer.css";
+import styles from "./Footer.module.css";
 
 const Footer = () => {
   return (
-    <footer className="footer-frame">
-      <Flex className="footer-border">
+    <footer className={styles.footerFrame}>
+      <Flex className={styles.footerBorder}>
         <p>© 2023-2025 MetalMental. All rights reserved.</p>
       </Flex>
     </footer>

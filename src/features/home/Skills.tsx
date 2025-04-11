@@ -1,14 +1,14 @@
 import { Stack } from "@mantine/core"
-import "./Skills.css";
 import H2 from "../../components/H2";
 import SkillSection from "../../components/SkillSection";
 import TypeScriptSvg from "../../components/svg/TypeScriptSvg";
 import PythonSvg from "../../components/svg/PythonSvg";
 import AwsSvg from "../../components/svg/AwsSvg";
+import styles from "./Skills.module.css";
 
 const Skills = () => {
   return (
-    <Stack className="section">
+    <Stack className={styles.section}>
       <H2 text="Skills" />
       <SkillSection
         title="Frontend"

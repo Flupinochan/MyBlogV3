@@ -1,5 +1,3 @@
-@import url("../../index.css");
-
 .menu {
   display: block;
   font-size: clamp(1rem, -0.318rem + 2.62vw, 1.5rem);
@@ -18,7 +16,7 @@
 }
 
 /* NavLink(aタグ)のページにいる際のスタイル適用 */
-a.active {
+.active {
   color: var(--bg-color);
   background-color: var(--text-color);
 }

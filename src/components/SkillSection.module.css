@@ -1,4 +1,4 @@
-.section-border {
+.sectionBorder {
   justify-content: center;
   align-items: center;
   margin: 1rem 0;
@@ -6,7 +6,7 @@
   flex-wrap: wrap;
 }
 
-.badge-gap {
+.badgeGap {
   gap: clamp(0.625rem, 0.114rem + 1.64vw, 1.25rem);
 }
 
@@ -21,7 +21,7 @@
 }
 
 @media (min-width: 768px) {
-  .section-border {
+  .sectionBorder {
     justify-content: start;
     flex-wrap: nowrap;
   }
@@ -30,9 +30,8 @@
     align-items: start;
   }
 
-  .svg-padding {
+  .svgPadding {
     padding: 50px;
     padding-left: 30px;
   }
-
 }

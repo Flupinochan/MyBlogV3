@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense } from "react";
 import { createBrowserRouter, Navigate, RouterProvider, } from "react-router-dom";
 import ReactDOM from "react-dom/client";
 import { Amplify } from "aws-amplify";
@@ -7,15 +7,17 @@ import App from "./App.tsx";
 import Loading from "./layouts/loading/Loading.tsx";
 import { createTheme, MantineProvider } from '@mantine/core';
 import '@mantine/core/styles.css';
-import "./index.css";
+import "./index.module.css";
 import Home from "./features/home/Home.tsx";
 import Tool from "./features/Tool/Tool.tsx";
 import Error from "./layouts/error/Error.tsx";
 
 const theme = createTheme({
+  fontFamily: 'Noto Sans JP',
   primaryColor: "violet",
   colors: {
-    dark: ["#ECEDEE", "#CCCECF", "#ACAEB1", "#8C8F92", "#6D6F73", "#4D5054", "#2D3036", "#0d1117", "#111316", "#141414"]
+    dark: ["#ECEDEE", "#CCCECF", "#ACAEB1", "#8C8F92", "#6D6F73", "#4D5054", "#2D3036", "#0d1117", "#111316", "#141414"],
+    grape: ["#f8f0fc", "#f3e5fa", "#e9d9f8", "#e0cdf7", "#d6c1f5", "#ccc5f4", "#c2a9f2", "#7828C8", "#8c3cd0", "#862e9c"]
   },
   autoContrast: true,
   focusRing: "auto",
@@ -33,16 +35,16 @@ const theme = createTheme({
 
 Amplify.configure(outputs);
 
-// ローディング画面テスト用遅延コンポーネント
-const LazyApp = lazy(() => {
-  // ここで意図的に遅延を加える
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(import('./App.tsx'));
-    }, 3000);
-    // 2秒待機
-  });
-});
+// // ローディング画面テスト用遅延コンポーネント
+// const LazyApp = lazy(() => {
+//   // ここで意図的に遅延を加える
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       resolve(import('./App.tsx'));
+//     }, 3000);
+//     // 2秒待機
+//   });
+// });
 
 // React Router Dom (React Routerはサーバーサイド用)
 // index: trueがOutletに表示されるデフォルトのページ
@@ -52,7 +54,7 @@ const LazyApp = lazy(() => {
 // errorElementでエラー時のページ遷移設定
 const router = createBrowserRouter([
   {
-    path: "/", element: <LazyApp />,
+    path: "/", element: <App />,
     children: [
       { index: true, element: <Home />, errorElement: <Error /> },
       { path: "tool", element: <Tool />, errorElement: <Navigate to="/" replace /> },

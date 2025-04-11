@@ -1,5 +1,3 @@
-@import url("../../index.css");
-
 .header {
   padding-top: var(--html-margin);
   display: flex;
