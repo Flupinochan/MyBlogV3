@@ -23,8 +23,8 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
   let statusCode = 400;
 
   try {
-    const body: IContactRequest = JSON.parse(event.body || "{}");
-    console.log(`リクエストボディ: ${body}`);
+    const body: IContactRequest = event.body ? JSON.parse(event.body) : { error: 'event.bodyが空です' };
+    console.log(`リクエストボディ: ${JSON.stringify(body)}`);
 
     const email = "flupino@metalmental.net";
     const sesInput: SendEmailCommandInput = {
@@ -50,8 +50,8 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
         }
       }
     }
-    const sesCommand = new SendEmailCommand(sesInput);
 
+    const sesCommand = new SendEmailCommand(sesInput);
     const sesResponse: SendEmailCommandOutput = await sesClient.send(sesCommand);
 
     statusCode = sesResponse.$metadata.httpStatusCode ?? 400;
@@ -74,11 +74,11 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
   }
 
   return {
-    statusCode: statusCode,
     headers: {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Headers": "*",
     },
+    statusCode: statusCode,
     body: JSON.stringify(response),
   };
 };

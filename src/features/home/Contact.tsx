@@ -3,17 +3,14 @@ import skillStyles from "./Skills.module.css";
 import H2 from '../../components/H2';
 import Button from '../../components/Button';
 import contactImage from "../../assets/contact_img.png";
-import amplifyOutputs from "../../../amplify_outputs.json";
 import { useForm } from "@mantine/form";
 import { zodResolver } from 'mantine-form-zod-resolver';
 import { z } from 'zod';
-import { IContactRequest } from '../../shared/interfaces/ContactInterface';
+import { IContactRequest, IContactResponse } from '../../shared/interfaces/ContactInterface';
 import { useDisclosure } from '@mantine/hooks';
 import modalGif from "../../assets/modal.gif";
-
-// Endpont URL
-// amplify_outputs.jsonはデプロイごとに生成される
-const apiEndpoint = amplifyOutputs.custom.API.MyBlogV3.endpoint + "/contact";
+import { useState } from 'react';
+import axiosInstance from '../../utils/axiosInstance';
 
 // バリデーション
 const validationSchema = z.object({
@@ -25,6 +22,7 @@ const validationSchema = z.object({
 const Contact = () => {
   // Modal
   const [opened, { open, close }] = useDisclosure(false);
+  const [isSuccess, setIsSucsess] = useState(false);
 
   // From
   const form = useForm({
@@ -42,22 +40,16 @@ const Contact = () => {
     form.validate();
 
     try {
-      const res = await fetch(apiEndpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
-      });
+      const response = await axiosInstance.post("/contact", values);
+      const data: IContactResponse = response.data;
+      console.log(data);
 
-      if (!res.ok) {
-        throw new Error("送信に失敗しました");
-      }
-
-      // 任意: サンクスメッセージ表示 or GIF
+      setIsSucsess(true);
+      form.reset();
       open();
-      //form.reset();
 
     } catch (error) {
-      console.error(error);
+      setIsSucsess(false);
       open();
     }
   };
@@ -72,9 +64,18 @@ const Contact = () => {
         size="md">
         {/* Modal content */}
         <Stack justify='center' align='center'>
-          <Text size="xl" mah={20}>Thank you for your message!</Text>
-          <Text size="xl">(*^_^*)</Text>
-          <Image src={modalGif} alt='Thanks Image' />
+          {isSuccess ? (
+            <>
+              <Text size="xl" mah={20}>Thank you for your message!</Text>
+              <Text size="xl">(*^_^*)</Text>
+              <Image src={modalGif} alt="Thanks Image" />
+            </>
+          ) : (
+            <>
+              <Text size="xl" mah={20}>Sorry, something went wrong.</Text>
+              <Text size="xl">m(_ _)m</Text>
+            </>
+          )}
         </Stack>
       </Modal>
       <section className={skillStyles.section} id='contact'>
