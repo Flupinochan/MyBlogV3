@@ -31,7 +31,7 @@ const Tool = () => {
             <H4 text="API" />
             <List className={toolStyles.listMarker} withPadding>
               <ListItem>
-                <Anchor component={NavLink} to="swagger-ui">SwaggerUI</Anchor>
+                <Anchor component={NavLink} to="swagger-ui">MyBlogV3</Anchor>
               </ListItem>
             </List>
           </Stack>

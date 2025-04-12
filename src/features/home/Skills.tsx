@@ -5,10 +5,97 @@ import TypeScriptSvg from "../../components/svg/TypeScriptSvg";
 import PythonSvg from "../../components/svg/PythonSvg";
 import AwsSvg from "../../components/svg/AwsSvg";
 import styles from "./Skills.module.css";
+import { useRef } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Skills = () => {
+
+  const ref = useRef<HTMLDivElement>(null);
+
+  useGSAP((_context, _contextSafe) => {
+    const element = ref.current;
+
+    // 初期位置を設定：スクロール前はy:200かつ非表示
+    gsap.set(element, { y: 200, opacity: 0 });
+
+    let mm = gsap.matchMedia();
+
+    // PC用
+    mm.add("(min-width: 769px)", () => {
+      // 下方向にスクロールした場合にフェードイン＆位置移動（y:200 -> 0, opacity:0 -> 1）
+      ScrollTrigger.create({
+        trigger: element,
+        start: "top 80%",
+        end: "bottom 50%",
+        scrub: false,
+        markers: true,
+        onEnter: () => {
+          gsap.to(element, { y: 0, opacity: 1, duration: 1 });
+        }
+      });
+
+      // 上方向にスクロール（戻る）場合にフェードアウト（opacity:1 -> 0）
+      ScrollTrigger.create({
+        trigger: element,
+        start: "top 80%",
+        end: "bottom 50%",
+        scrub: false,
+        markers: true,
+        onLeaveBack: () => {
+          gsap.to(element, {
+            opacity: 0, duration: 1,
+            onComplete: () => {
+              // フェードアウト完了後は、初期位置に戻す
+              gsap.set(element, { y: 200, opacity: 0 });
+            }
+          });
+        }
+      });
+      return () => { };
+    });
+
+    // スマホ用
+    mm.add("(max-width: 768px)", () => {
+      // 下方向にスクロールした場合にフェードイン＆位置移動（y:200 -> 0, opacity:0 -> 1）
+      ScrollTrigger.create({
+        trigger: element,
+        start: "top 95%",
+        end: "bottom 50%",
+        scrub: false,
+        markers: true,
+        onEnter: () => {
+          gsap.to(element, { y: 0, opacity: 1, duration: 1 });
+        }
+      });
+
+      // 上方向にスクロール（戻る）場合にフェードアウト（opacity:1 -> 0）
+      ScrollTrigger.create({
+        trigger: element,
+        start: "top 95%",
+        end: "bottom 50%",
+        scrub: false,
+        markers: true,
+        onLeaveBack: () => {
+          gsap.to(element, {
+            opacity: 0, duration: 1,
+            onComplete: () => {
+              // フェードアウト完了後は、初期位置に戻す
+              gsap.set(element, { y: 200, opacity: 0 });
+            }
+          });
+        }
+      });
+      return () => { };
+    });
+
+  }, { scope: ref });
+
   return (
-    <Stack className={styles.section}>
+    <Stack className={styles.section} ref={ref}>
       <H2 text="Skills" />
       <SkillSection
         title="Frontend"
