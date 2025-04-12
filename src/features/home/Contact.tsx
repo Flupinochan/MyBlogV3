@@ -77,7 +77,7 @@ const Contact = () => {
           <Image src={modalGif} alt='Thanks Image' />
         </Stack>
       </Modal>
-      <section className={skillStyles.section}>
+      <section className={skillStyles.section} id='contact'>
         <H2 text='Contact' />
         <Space h="xl" />
         <form onSubmit={form.onSubmit(handleSubmit)}>

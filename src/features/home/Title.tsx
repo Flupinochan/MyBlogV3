@@ -1,8 +1,8 @@
 import { Flex, Grid, GridCol, Image, Stack } from "@mantine/core";
 import titleImage from "../../assets/home_title.png";
-import Button from "../../components/Button";
 import titleStyles from "./Title.module.css";
 import indexStyles from "../../index.module.css";
+import CustomAnchor from "../../components/CustomAnchor";
 
 const Title = () => {
   return (
@@ -15,7 +15,7 @@ const Title = () => {
             <p style={{ paddingTop: "1rem" }}>フロントエンドからバックエンド、インフラまで手掛けるメタルなメンタルを持つエンジニアです</p>
           </Stack>
           <div className={titleStyles.button}>
-            <Button text="Contact me" type="button" />
+            <CustomAnchor href="#contact" text="Contact Me" />
           </div>
           <Flex justify={"end"} align={"center"} className={titleStyles.miniText}>
             <div className={titleStyles.square} />

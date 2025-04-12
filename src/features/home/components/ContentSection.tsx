@@ -1,6 +1,6 @@
-import { Anchor, Image, Space, Stack } from "@mantine/core"
-import styles from "../../../components/Button.module.css";
+import { Image, Space, Stack } from "@mantine/core"
 import H4 from "../../../components/H4"
+import CustomAnchor from "../../../components/CustomAnchor";
 
 interface ContentSectiontionProps {
   title: string;
@@ -20,7 +20,7 @@ const ContentSection: React.FC<ContentSectiontionProps> = (props) => {
         <Image src={props.image} alt={props.title + " image"} />
         <p>{props.date}</p>
         <p>{props.description}</p>
-        <Anchor unstyled className={styles.btn} href={props.url} target="_blank" rel="noopener noreferrer">{"Go " + props.title}</Anchor>
+        <CustomAnchor href={props.url} text={"Go " + props.title} />
       </Stack>
     </section>
   )
