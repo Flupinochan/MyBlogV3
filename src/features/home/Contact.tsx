@@ -50,7 +50,7 @@ const Contact = () => {
         withCloseButton: false,
       })
 
-      await new Promise(resolve => setTimeout(resolve, 5000));
+      await new Promise(resolve => setTimeout(resolve, 1000));
 
       const response = await axiosInstance.post("/contact", values);
       const data: IContactResponse = response.data;
