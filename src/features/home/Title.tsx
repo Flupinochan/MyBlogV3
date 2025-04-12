@@ -15,7 +15,7 @@ const Title = () => {
             <p style={{ paddingTop: "1rem" }}>フロントエンドからバックエンド、インフラまで手掛けるメタルなメンタルを持つエンジニアです</p>
           </Stack>
           <div className={titleStyles.button}>
-            <Button text="Contact me" />
+            <Button text="Contact me" type="button" />
           </div>
           <Flex justify={"end"} align={"center"} className={titleStyles.miniText}>
             <div className={titleStyles.square} />

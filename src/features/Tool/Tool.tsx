@@ -1,9 +1,9 @@
-import MySwaggerUi from "./components/swagger/MySwaggerUi"
+import SwaggerUi from "./components/swagger/SwaggerUi"
 
 const Tool = () => {
   return (
     <section>
-      <MySwaggerUi />
+      <SwaggerUi />
     </section>
   )
 }

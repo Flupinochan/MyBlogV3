@@ -4,10 +4,11 @@ import styles from './Button.module.css';
 
 interface ButtonProps {
   text: string;
+  type: "button" | "submit" | "reset" | undefined,
 }
 
-const Button: React.FC<ButtonProps> = ({ text }) => (
-  <UnstyledButton className={styles.btn}><p>{text}</p></UnstyledButton>
+const Button: React.FC<ButtonProps> = (props) => (
+  <UnstyledButton className={styles.btn} type={props.type}><p>{props.text}</p></UnstyledButton>
 );
 
 export default Button;

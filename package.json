@@ -6,26 +6,33 @@
   "scripts": {
     "dev": "vite",
     "css": "npx tcm src --watch",
+    "amplify": "npx ampx sandbox --stream-function-logs",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
   "dependencies": {
     "@aws-amplify/ui-react": "^6.5.5",
+    "@aws-sdk/client-sesv2": "^3.787.0",
+    "@aws-sdk/node-http-handler": "^3.374.0",
     "@mantine/core": "^7.17.3",
+    "@mantine/form": "^7.17.4",
     "@mantine/hooks": "^7.17.3",
     "aws-amplify": "^6.6.6",
+    "mantine-form-zod-resolver": "^1.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^7.5.0",
     "swagger-ui": "^5.20.8",
-    "swagger-ui-react": "^5.20.8"
+    "swagger-ui-react": "^5.20.8",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@aws-amplify/backend": "^1.5.0",
     "@aws-amplify/backend-cli": "^1.2.9",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
+    "@types/swagger-ui-react": "^5.18.0",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
     "@vitejs/plugin-react": "^4.2.1",
