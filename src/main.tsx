@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, lazy } from "react";
 import { createBrowserRouter, Navigate, RouterProvider, } from "react-router-dom";
 import ReactDOM from "react-dom/client";
 import { Amplify } from "aws-amplify";
@@ -35,16 +35,14 @@ const theme = createTheme({
 
 Amplify.configure(outputs);
 
-// // ローディング画面テスト用遅延コンポーネント
-// const LazyApp = lazy(() => {
-//   // ここで意図的に遅延を加える
-//   return new Promise((resolve) => {
-//     setTimeout(() => {
-//       resolve(import('./App.tsx'));
-//     }, 3000);
-//     // 2秒待機
-//   });
-// });
+// 1秒ローディング画面の表示
+const LazyApp = lazy(() =>
+  new Promise<{ default: React.ComponentType }>((resolve) => {
+    setTimeout(() => {
+      resolve({ default: App });
+    }, 1000);
+  })
+);
 
 // React Router Dom (React Routerはサーバーサイド用)
 // index: trueがOutletに表示されるデフォルトのページ
@@ -54,7 +52,7 @@ Amplify.configure(outputs);
 // errorElementでエラー時のページ遷移設定
 const router = createBrowserRouter([
   {
-    path: "/", element: <App />,
+    path: "/", element: <LazyApp />,
     children: [
       { index: true, element: <Home />, errorElement: <Error /> },
       { path: "tool", element: <Tool />, errorElement: <Navigate to="/" replace /> },

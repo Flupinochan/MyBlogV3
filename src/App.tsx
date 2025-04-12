@@ -5,7 +5,6 @@ import Menu from "./layouts/menu/Menu";
 import styles from "./App.module.css";
 
 function App() {
-
   return (
     <>
       <div className={styles.stickyHeader}>
