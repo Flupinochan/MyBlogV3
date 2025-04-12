@@ -11,6 +11,7 @@ import { useDisclosure } from '@mantine/hooks';
 import modalGif from "../../assets/modal.gif";
 import { useState } from 'react';
 import axiosInstance from '../../utils/axiosInstance';
+import { notifications } from '@mantine/notifications';
 
 // バリデーション
 const validationSchema = z.object({
@@ -40,15 +41,28 @@ const Contact = () => {
     form.validate();
 
     try {
+      notifications.show({
+        title: "Sending",
+        message: "メッセージを送信中...",
+        position: "top-center",
+        loading: true,
+        autoClose: false,
+        withCloseButton: false,
+      })
+
+      await new Promise(resolve => setTimeout(resolve, 5000));
+
       const response = await axiosInstance.post("/contact", values);
       const data: IContactResponse = response.data;
       console.log(data);
 
+      notifications.clean();
       setIsSucsess(true);
       form.reset();
       open();
 
     } catch (error) {
+      notifications.clean();
       setIsSucsess(false);
       open();
     }

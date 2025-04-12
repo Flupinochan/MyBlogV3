@@ -7,10 +7,13 @@ import App from "./App.tsx";
 import Loading from "./layouts/loading/Loading.tsx";
 import { createTheme, MantineProvider } from '@mantine/core';
 import '@mantine/core/styles.css';
+import '@mantine/notifications/styles.css';
 import "./index.module.css";
 import Home from "./features/home/Home.tsx";
 import Tool from "./features/Tool/Tool.tsx";
 import Error from "./layouts/error/Error.tsx";
+import { Notifications } from '@mantine/notifications';
+
 
 const theme = createTheme({
   fontFamily: 'Noto Sans JP',
@@ -63,6 +66,7 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <MantineProvider theme={theme} defaultColorScheme="dark">
+    <Notifications />
     <React.StrictMode>
       <Suspense fallback={<Loading />}>
         <RouterProvider router={router} />
