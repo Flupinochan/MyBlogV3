@@ -10,7 +10,7 @@ frontend:
   phases:
     build:
       commands:
-        - ls -l ./src
+        - ls -l ./src/features
         - npm run build
   artifacts:
     baseDirectory: dist
