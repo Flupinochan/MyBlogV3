@@ -1,25 +1,23 @@
-## AWS Amplify React+Vite Starter Template
+# MetalMental Blog
 
-This repository provides a starter template for creating applications using React+Vite and AWS Amplify, emphasizing easy setup for authentication, API, and database capabilities.
+## Amplify CLI
+https://docs.amplify.aws/react/reference/cli-commands/
 
-## Overview
+```bash
+npm install
+npx ampx sandbox --stream-function-logs
+npm run dev
+```
 
-This template equips you with a foundational React application integrated with AWS Amplify, streamlined for scalability and performance. It is ideal for developers looking to jumpstart their project with pre-configured AWS services like Cognito, AppSync, and DynamoDB.
+## git-secrets
 
-## Features
+`.git\hooks` に `git secrets` コマンドの実行が記載されていて、コミットが失敗するため、削除する
 
-- **Authentication**: Setup with Amazon Cognito for secure user authentication.
-- **API**: Ready-to-use GraphQL endpoint with AWS AppSync.
-- **Database**: Real-time database powered by Amazon DynamoDB.
+## typed-css-modules
 
-## Deploying to AWS
+cssファイルを個別に定義
 
-For detailed instructions on deploying your application, refer to the [deployment section](https://docs.amplify.aws/react/start/quickstart/#deploy-a-fullstack-app-to-aws) of our documentation.
-
-## Security
-
-See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
-
-## License
-
-This library is licensed under the MIT-0 License. See the LICENSE file.
+```
+npm install --save-dev typed-css-modules
+npx tcm src --watch
+```

@@ -1,0 +1,7 @@
+.space {
+  margin: var(--html-margin);
+}
+
+.listMarker li::marker {
+  color: var(--bg-color);
+}

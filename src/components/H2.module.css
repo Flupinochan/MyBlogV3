@@ -1,0 +1,17 @@
+.h2Left {
+  margin-top: 4px;
+  height: 90%;
+  width: clamp(1.125rem, 0.767rem + 1.15vw, 1.563rem);
+  margin-right: clamp(0.7rem, 0.455rem + 0.79vw, 1rem);
+  border: 0.1rem solid var(--bg-color);
+}
+
+.h2Right {
+  height: 50%;
+  margin-left: clamp(0.7rem, 0.455rem + 0.79vw, 1rem);
+  border-bottom: 0.1rem solid var(--bg-color);
+}
+
+.h2Center {
+  line-height: normal
+}

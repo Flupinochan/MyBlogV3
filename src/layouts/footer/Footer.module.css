@@ -1,0 +1,15 @@
+.footerFrame {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footerBorder {
+  width: 70%;
+  border-top: 0.1rem solid var(--text-color);
+  margin-top: 2rem;
+  padding: 2rem 0;
+  justify-content: center;
+  align-items: center;
+}

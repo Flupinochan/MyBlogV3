@@ -1,0 +1,77 @@
+/* グローバル定義 */
+
+/* 変数(var)定義 */
+:root {
+  /* https://min-max-calculator.9elements.com/ */
+  --html-margin: clamp(0.5rem, -0.318rem + 2.62vw, 1.5rem);
+  --text-color: #ECEDEE;
+  --bg-color: #7828C8;
+  --section-bg-color: #090C10;
+  --blue-font-color: #006FEE;
+  --blue-bg-color: #001731;
+  --yellow-font-color: #F5A524;
+  --yellow-bg-color: #312107;
+  --red-font-color: #F31260;
+  --red-bg-color: #310413;
+}
+
+.purple {
+  color: var(--bg-color);
+}
+
+.blue-font {
+  color: var(--blue-font-color);
+}
+
+/* 全ての要素のデフォルトの余白、スタイルをリセット */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+html {
+  margin: 0rem var(--html-margin);
+  height: 100vh;
+  /* スクロールバー非表示 */
+  /* overflow: hidden; */
+  /* フォントは、mantine uiで設定可能 */
+  /* font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Meiryo", "sans-serif"; */
+  letter-spacing: 0.05rem;
+  overflow-x: hidden;
+}
+
+h1 {
+  font-size: clamp(2rem, 1.182rem + 2.62vw, 3rem);
+}
+
+h2 {
+  font-size: clamp(1.75rem, 1.341rem + 1.31vw, 2.25rem);
+  font-weight: 400;
+}
+
+h3 {
+  font-size: clamp(1.5rem, 1.091rem + 1.31vw, 2rem);
+  font-weight: 400;
+}
+
+h4 {
+  font-size: clamp(1.25rem, 0.841rem + 1.31vw, 1.75rem);
+  font-weight: 400;
+}
+
+h5 {
+  font-size: clamp(1.125rem, 0.818rem + 0.98vw, 1.5rem);
+  font-weight: 400;
+}
+
+h6 {
+  font-size: clamp(1rem, 0.795rem + 0.65vw, 1.25rem);
+  font-weight: 400;
+}
+
+p {
+  font-size: clamp(1rem, 0.898rem + 0.33vw, 1.125rem);
+  line-height: clamp(1.5rem, 1.091rem + 1.31vw, 2rem);
+}

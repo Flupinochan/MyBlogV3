@@ -1,0 +1,20 @@
+.gridSpace {
+  padding-right: 1rem;
+}
+
+.gridSpace2 {
+  padding-left: 1rem;
+}
+
+@media (max-width: 768px) {
+  .gridSpace {
+    padding-bottom: 4rem;
+    padding-right: 0rem;
+    padding-left: 0rem;
+  }
+
+  .gridSpace2 {
+    padding-right: 0rem;
+    padding-left: 0rem
+  }
+}

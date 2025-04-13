@@ -1,0 +1,37 @@
+.sectionBorder {
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.badgeGap {
+  gap: clamp(0.625rem, 0.114rem + 1.64vw, 1.25rem);
+}
+
+.stack {
+  align-items: center;
+}
+
+.badge {
+  /* background-color: var(--blue-bg-color); */
+  padding: 0rem 0.6rem;
+  border-radius: 0.3rem;
+}
+
+@media (min-width: 768px) {
+  .sectionBorder {
+    justify-content: start;
+    flex-wrap: nowrap;
+  }
+
+  .stack {
+    align-items: start;
+  }
+
+  .svgPadding {
+    padding: 50px;
+    padding-left: 30px;
+  }
+}
