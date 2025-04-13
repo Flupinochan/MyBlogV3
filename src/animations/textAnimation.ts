@@ -22,8 +22,6 @@ gsap.registerEffect({
     const tl = gsap.timeline();
     tl.set(".contactMeAnimation", {
       opacity: 0,
-    }).set(".rightTextAnimation", {
-      opacity: 0,
     }).to(".h1TextAnimation", {
       text: {
         value: renderText,
