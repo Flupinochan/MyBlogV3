@@ -56,6 +56,7 @@ gsap.registerEffect({
         markers: false,
         onEnter: () => {
           gsap.to(targets, {
+            x: 0,
             opacity: 1,
             duration: config.duration,
             stagger: config.stagger,
