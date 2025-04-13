@@ -10,7 +10,7 @@ gsap.registerEffect({
   name: "scrollFadeIn2",
   extendTimeline: false,
   defaults: {
-    duration: 1,
+    duration: 0.5,
     top: "top 95%"
   },
   effect: (elements: gsap.TweenTarget, config: ScrollFadeIn2Config) => {

@@ -36,7 +36,7 @@ function App() {
         self.direction === -1 ? showAnim.play() : showAnim.reverse();
       }
     });
-
+    ScrollTrigger.refresh();
 
   });
 
