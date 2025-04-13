@@ -14,7 +14,7 @@ const Title = () => {
   useGSAP((_context, _contextSafe) => {
     gsap.effects.scrollFadeIn2(ref.current, {});
     gsap.effects.scrollFadeIn(".scrollFadeIn", { scope: ref.current });
-    gsap.effects.textAnimation(".dummy", { scope: ref.current });
+    // gsap.effects.textAnimation(".dummy", { scope: ref.current });
 
     ScrollTrigger.refresh();
   }, { scope: ref });
@@ -25,8 +25,8 @@ const Title = () => {
       <GridCol span={{ base: 12, md: 8 }} className={titleStyles.firstCol}>
         <Stack justify="space-around" style={{ height: "100%" }}>
           <Stack>
-            <h1 className={`${titleStyles.titleText} h1TextAnimation`}></h1>
-            <p style={{ paddingTop: "1rem" }} className="pTextAnimation"></p>
+            <h1 className={titleStyles.titleText}><span className={indexStyles.purple}>MetalMental</span> is a <span className={indexStyles.purple}>Full-Stack</span> and <span className={indexStyles.purple}>SRE</span> engineer</h1>
+            <p style={{ paddingTop: "1rem" }}>フロントエンドからバックエンド、インフラまで手掛けるメタルなメンタルを持つエンジニアです</p>
           </Stack>
           <div className={`${titleStyles.button} contactMeAnimation`}>
             <CustomAnchor href="#contact" text="Contact Me" />
