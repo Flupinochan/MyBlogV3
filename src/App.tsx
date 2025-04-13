@@ -18,6 +18,10 @@ import { TextPlugin } from 'gsap/TextPlugin';
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(TextPlugin);
 
+ScrollTrigger.config({
+  autoRefreshEvents: "resize,visibilitychange,DOMContentLoaded,load"
+});
+
 function App() {
   useEffect(() => {
     const handleLoad = () => {
