@@ -14,13 +14,13 @@ const Skills = () => {
 
   const ref = useRef<HTMLDivElement>(null);
   useGSAP((_context, _contextSafe) => {
-    gsap.effects.scrollFadeIn2(ref.current, {});
-    gsap.effects.scrollFadeIn(".scrollFadeIn", { scope: ref.current });
+    gsap.effects.scrollFadeIn(ref.current, {});
+    gsap.effects.scrollMoveYFadeIn(".scrollMoveYFadeIn", { scope: ref.current });
     ScrollTrigger.refresh();
   }, { scope: ref });
 
   return (
-    <Stack className={`${styles.section} scrollFadeIn2`} ref={ref}>
+    <Stack className={`${styles.section} scrollFadeIn`} ref={ref}>
       <H2 text="Skills" />
       <SkillSection
         title="Frontend"

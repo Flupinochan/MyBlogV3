@@ -12,14 +12,13 @@ const Title = () => {
 
   const ref = useRef<HTMLDivElement>(null);
   useGSAP((_context, _contextSafe) => {
-    gsap.effects.scrollFadeIn2(ref.current, {});
-    gsap.effects.scrollFadeIn(".scrollFadeIn", { scope: ref.current });
+    gsap.effects.scrollFadeIn(ref.current, {});
     gsap.effects.textAnimation(".dummy", { scope: ref.current });
     ScrollTrigger.refresh();
   }, { scope: ref });
 
   return (
-    <Grid ref={ref} gutter={0} grow className={`${titleStyles.titleGrid} scrollFadeIn2`}
+    <Grid ref={ref} gutter={0} grow className={`${titleStyles.titleGrid} scrollFadeIn`}
       breakpoints={{ xs: '0px', sm: '0px', md: '768px', lg: '0px', xl: '0px' }}>
       <GridCol span={{ base: 12, md: 8 }} className={titleStyles.firstCol}>
         <Stack justify="space-around" style={{ height: "100%" }}>

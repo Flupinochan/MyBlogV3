@@ -6,9 +6,9 @@ import Menu from "./layouts/menu/Menu";
 import FooterBar from "./layouts/footerBar/footerBar";
 import styles from "./App.module.css";
 // gsapインポート
+import "./animations/scrollMoveYFadeIn";
 import "./animations/scrollFadeIn";
-import "./animations/scrollFadeIn2";
-import "./animations/scrollFadeIn3";
+import "./animations/scrollMoveXFadeIn";
 import "./animations/textAnimation";
 import { gsap } from 'gsap';
 import { useGSAP } from "@gsap/react";
