@@ -11,7 +11,7 @@ gsap.registerEffect({
   extendTimeline: false,
   defaults: {
     duration: 1,
-    top: "top 95%"
+    top: "top 90%"
   },
   effect: (elements: gsap.TweenTarget, config: ScrollFadeIn2Config) => {
     const targets: HTMLDivElement[] = gsap.utils.toArray(elements);

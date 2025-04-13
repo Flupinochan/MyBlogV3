@@ -20,12 +20,22 @@ gsap.registerPlugin(TextPlugin);
 
 function App() {
   useEffect(() => {
-    const handleLoad = () => {
-      ScrollTrigger.refresh(); // ScrollTriggerを再計算
-    };
-    window.addEventListener("load", handleLoad);
+    // MutationObserverを使用してDOMの更新が終わったタイミングでScrollTriggerをリフレッシュ
+    const observer = new MutationObserver(() => {
+      // DOMの変更が完了したらScrollTriggerをリフレッシュ
+      ScrollTrigger.refresh();
+      observer.disconnect(); // 監視を解除
+    });
+
+    // ドキュメント全体を監視
+    observer.observe(document, {
+      childList: true, // 子要素の変更を監視
+      subtree: true,   // 子要素の子要素も監視
+    });
+
+    // コンポーネントがアンマウントされた際に監視を解除
     return () => {
-      window.removeEventListener("load", handleLoad);
+      observer.disconnect();
     };
   }, []);
 
