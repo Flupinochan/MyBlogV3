@@ -32,6 +32,7 @@ gsap.registerEffect({
           scrub: false,
           markers: true,
           invalidateOnRefresh: true,
+          scroller: document.body,
           onEnter: () => {
             if (fadeOutTween && fadeOutTween.isActive()) {
               fadeOutTween.kill();
@@ -48,6 +49,7 @@ gsap.registerEffect({
           scrub: false,
           markers: true,
           invalidateOnRefresh: true,
+          scroller: document.body,
           onLeaveBack: () => {
             fadeOutTween = gsap.to(el, {
               opacity: 0,
@@ -76,6 +78,7 @@ gsap.registerEffect({
           scrub: false,
           markers: true,
           invalidateOnRefresh: true,
+          scroller: document.body,
           onEnter: () => {
             if (fadeOutTween && fadeOutTween.isActive()) {
               fadeOutTween.kill();
@@ -92,6 +95,7 @@ gsap.registerEffect({
           scrub: false,
           markers: true,
           invalidateOnRefresh: true,
+          scroller: document.body,
           onLeaveBack: () => {
             fadeOutTween = gsap.to(el, {
               opacity: 0,
