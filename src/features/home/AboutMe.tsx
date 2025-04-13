@@ -3,10 +3,20 @@ import aboutMeStyles from "./AboutMe.module.css";
 import AboutMeSection from "./components/AboutMeSection";
 import H2 from "../../components/H2";
 import { Space } from "@mantine/core";
+import { useRef } from "react";
+import gsap from 'gsap';
+import { useGSAP } from "@gsap/react";
 
 const AboutMe = () => {
+
+  const ref = useRef<HTMLDivElement>(null);
+  useGSAP((_context, _contextSafe) => {
+    gsap.effects.scrollFadeIn2(ref.current, {});
+    gsap.effects.scrollFadeIn(".scrollFadeIn", { scope: ref.current });
+  }, { scope: ref });
+
   return (
-    <section className={`${skillsStyles.section} ${aboutMeStyles.backgroundImage}`}>
+    <section className={`${skillsStyles.section} ${aboutMeStyles.backgroundImage} scrollFadeIn2`} ref={ref}>
       <H2 text="About Me" />
       <AboutMeSection
         title="Carrer"

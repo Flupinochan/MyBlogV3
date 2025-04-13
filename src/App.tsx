@@ -3,6 +3,10 @@ import Header from "./layouts/header/Header";
 import Footer from "./layouts/footer/Footer";
 import Menu from "./layouts/menu/Menu";
 import styles from "./App.module.css";
+// gsapインポート
+import "./animations/scrollFadeIn";
+import "./animations/scrollFadeIn2";
+import FooterBar from "./layouts/footerBar/footerBar";
 
 function App() {
   return (
@@ -14,6 +18,7 @@ function App() {
       {/* Outletにルーティングされたページが表示 */}
       <Outlet />
       <Footer />
+      <FooterBar />
     </>
   );
 }

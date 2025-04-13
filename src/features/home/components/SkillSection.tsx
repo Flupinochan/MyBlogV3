@@ -12,7 +12,7 @@ interface SkillSectionProps {
 
 const SkillSection: React.FC<SkillSectionProps> = (props) => {
   return (
-    <Flex align={"center"} className={styles.sectionBorder} style={{ color: `${props.textColor}`, border: `0.1rem solid ${props.textColor}` }} >
+    <Flex align={"center"} className={`${styles.sectionBorder} scrollFadeIn`} style={{ color: `${props.textColor}`, border: `0.1rem solid ${props.textColor}` }} >
       <Box className={styles.svgPadding}>
         {props.svg}
       </Box>

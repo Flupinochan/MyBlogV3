@@ -14,15 +14,21 @@ const Error = () => {
     );
   }
 
-  if (error instanceof Error) {
-    // JavaScript の例外（throw new Error など）
+  if (
+    typeof error === "object" &&
+    error !== null &&
+    "message" in error &&
+    typeof (error as any).message === "string"
+  ) {
     return (
       <div>
         <h1>エラーが発生しました</h1>
+        <p>{(error as Error).message}</p>
         <p>flupino@metalmental.net までエラーのご報告をお願いいたします。</p>
       </div>
     );
   }
+
 
   // その他（型不明なケース）
   return (

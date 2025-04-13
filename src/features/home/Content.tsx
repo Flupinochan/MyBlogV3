@@ -5,10 +5,20 @@ import blogImage from "../../assets/blog_img.jpg";
 import youtubeImage from "../../assets/youtube_img.jpg";
 import contentStyles from "./Content.module.css";
 import skillStyles from "./Skills.module.css";
+import { useRef } from "react";
+import gsap from 'gsap';
+import { useGSAP } from "@gsap/react";
 
 const Content = () => {
+
+  const ref = useRef<HTMLDivElement>(null);
+  useGSAP((_context, _contextSafe) => {
+    gsap.effects.scrollFadeIn2(ref.current, {});
+    gsap.effects.scrollFadeIn(".scrollFadeIn", { scope: ref.current });
+  }, { scope: ref });
+
   return (
-    <Stack className={skillStyles.section}>
+    <Stack className={`${skillStyles.section} scrollFadeIn2`} ref={ref}>
       <H2 text="Content" />
       <Grid>
         <GridCol span={{ base: 12, sm: 6 }} className={contentStyles.gridSpace}>

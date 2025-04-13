@@ -10,13 +10,13 @@ interface Props {
 
 const AboutMeSection: React.FC<Props> = (props) => {
   return (
-    <>
+    <section className="scrollFadeIn">
       <div className={styles.space1} />
       <H4 text={props.title} />
       <div className={styles.space2} />
       <p>{props.text1}</p>
       <p>{props.text2}</p>
-    </>
+    </section>
   )
 }
 

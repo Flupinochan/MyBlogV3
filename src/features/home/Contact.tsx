@@ -1,4 +1,4 @@
-import { Grid, GridCol, Image, Modal, Space, Stack, Text, Textarea, TextInput } from '@mantine/core'
+import { Box, Grid, GridCol, Image, Modal, Space, Stack, Text, Textarea, TextInput } from '@mantine/core'
 import skillStyles from "./Skills.module.css";
 import H2 from '../../components/H2';
 import Button from '../../components/Button';
@@ -12,6 +12,9 @@ import modalGif from "../../assets/modal.gif";
 import { useState } from 'react';
 import axiosInstance from '../../utils/axiosInstance';
 import { notifications } from '@mantine/notifications';
+import { useRef } from "react";
+import gsap from 'gsap';
+import { useGSAP } from "@gsap/react";
 
 // バリデーション
 const validationSchema = z.object({
@@ -21,6 +24,13 @@ const validationSchema = z.object({
 });
 
 const Contact = () => {
+
+  const ref = useRef<HTMLDivElement>(null);
+  useGSAP((_context, _contextSafe) => {
+    gsap.effects.scrollFadeIn2(ref.current, {});
+    gsap.effects.scrollFadeIn(".scrollFadeIn", { scope: ref.current });
+  }, { scope: ref });
+
   // Modal
   const [opened, { open, close }] = useDisclosure(false);
   const [isSuccess, setIsSucsess] = useState(false);
@@ -92,13 +102,14 @@ const Contact = () => {
           )}
         </Stack>
       </Modal>
-      <section className={skillStyles.section} id='contact'>
+
+      <Box className={`${skillStyles.section} scrollFadeIn2`} id='contact' ref={ref}>
         <H2 text='Contact' />
         <Space h="xl" />
         <form onSubmit={form.onSubmit(handleSubmit)}>
           <Grid justify='space-between' align='center'>
             <GridCol span={6}>
-              <Stack gap={30}>
+              <Stack gap={30} className='scrollFadeIn'>
                 <TextInput
                   size="md"
                   styles={{ input: { backgroundColor: 'transparent' } }}
@@ -129,7 +140,7 @@ const Contact = () => {
             </GridCol>
           </Grid>
         </form>
-      </section >
+      </Box>
     </>
   )
 }
