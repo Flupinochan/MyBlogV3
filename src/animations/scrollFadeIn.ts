@@ -34,6 +34,7 @@ gsap.registerEffect({
           end: "bottom 50%",
           scrub: false,
           markers: false,
+          invalidateOnRefresh: true,
           onEnter: () => {
             // フェードアウトをキャンセル (高速に上スクロール=>下スクロールした際)
             if (fadeOutTween && fadeOutTween.isActive()) {
@@ -50,6 +51,7 @@ gsap.registerEffect({
           end: "bottom 50%",
           scrub: false,
           markers: false,
+          invalidateOnRefresh: true,
           onLeaveBack: () => {
             fadeOutTween = gsap.to(el, {
               opacity: 0,
@@ -73,6 +75,7 @@ gsap.registerEffect({
           end: "bottom 50%",
           scrub: false,
           markers: false,
+          invalidateOnRefresh: true, // 動的レンダリングに合わせてstartやendが再計算される
           onEnter: () => {
             if (fadeOutTween && fadeOutTween.isActive()) {
               fadeOutTween.kill();
@@ -88,6 +91,7 @@ gsap.registerEffect({
           end: "bottom 50%",
           scrub: false,
           markers: false,
+          invalidateOnRefresh: true,
           onLeaveBack: () => {
             fadeOutTween = gsap.to(el, {
               opacity: 0,

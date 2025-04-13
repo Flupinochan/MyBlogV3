@@ -31,6 +31,7 @@ gsap.registerEffect({
         end: "bottom 50%",
         scrub: false,
         markers: false,
+        invalidateOnRefresh: true,
         onEnter: () => {
           gsap.to(targets, {
             x: 0,
@@ -52,6 +53,7 @@ gsap.registerEffect({
         end: "bottom 50%",
         scrub: false,
         markers: false,
+        invalidateOnRefresh: true,
         onEnter: () => {
           gsap.to(targets, {
             x: 0,

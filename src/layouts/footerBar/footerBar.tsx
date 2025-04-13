@@ -18,6 +18,7 @@ const FooterBar: React.FC = () => {
           start: "top top",
           end: "bottom bottom",
           scrub: true,
+          invalidateOnRefresh: true,
         },
         transformOrigin: "left center", // 左から
       }

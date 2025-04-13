@@ -30,6 +30,7 @@ gsap.registerEffect({
           end: "bottom 50%",
           scrub: false,
           markers: false,
+          invalidateOnRefresh: true,
           onEnter: () => {
             gsap.to(el, { opacity: 1, duration: config.duration });
           },
@@ -49,6 +50,7 @@ gsap.registerEffect({
           end: "bottom 50%",
           scrub: false,
           markers: false,
+          invalidateOnRefresh: true,
           // 下方向スクロールアニメーション
           onEnter: () => {
             gsap.to(el, { opacity: 1, duration: config.duration });
