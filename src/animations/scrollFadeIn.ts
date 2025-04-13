@@ -15,7 +15,7 @@ gsap.registerEffect({
   defaults: {
     duration: 0.5,
     durationBack: 1,
-    top: "top 95%"
+    top: "top 80%"
   },
   effect: (elements: gsap.TweenTarget, config: ScrollFadeInConfig) => {
     const targets: HTMLDivElement[] = gsap.utils.toArray(elements);
@@ -33,7 +33,7 @@ gsap.registerEffect({
           start: config.top,
           end: "bottom 50%",
           scrub: false,
-          markers: false,
+          markers: true,
           invalidateOnRefresh: true,
           onEnter: () => {
             // フェードアウトをキャンセル (高速に上スクロール=>下スクロールした際)
@@ -50,7 +50,7 @@ gsap.registerEffect({
           start: config.top,
           end: "bottom 50%",
           scrub: false,
-          markers: false,
+          markers: true,
           invalidateOnRefresh: true,
           onLeaveBack: () => {
             fadeOutTween = gsap.to(el, {
@@ -74,7 +74,7 @@ gsap.registerEffect({
           start: config.top,
           end: "bottom 50%",
           scrub: false,
-          markers: false,
+          markers: true,
           invalidateOnRefresh: true, // 動的レンダリングに合わせてstartやendが再計算される
           onEnter: () => {
             if (fadeOutTween && fadeOutTween.isActive()) {
@@ -90,7 +90,7 @@ gsap.registerEffect({
           start: config.top,
           end: "bottom 50%",
           scrub: false,
-          markers: false,
+          markers: true,
           invalidateOnRefresh: true,
           onLeaveBack: () => {
             fadeOutTween = gsap.to(el, {
