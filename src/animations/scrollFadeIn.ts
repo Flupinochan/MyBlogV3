@@ -61,9 +61,6 @@ gsap.registerEffect({
           }
         });
 
-        // 手動でリフレッシュを呼び出す
-        ScrollTrigger.refresh(); // これで動的なレイアウト変更に対応
-
         return () => {
           trigger1.kill();
           trigger2.kill();
@@ -106,9 +103,6 @@ gsap.registerEffect({
             });
           }
         });
-
-        // 手動でリフレッシュを呼び出す
-        ScrollTrigger.refresh(); // これで動的なレイアウト変更に対応
 
         return () => {
           trigger1.kill();

@@ -31,8 +31,6 @@ const FooterBar: React.FC = () => {
       },
     });
 
-    ScrollTrigger.refresh();
-
   }, { scope: ref });
 
 

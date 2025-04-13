@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Header from "./layouts/header/Header";
 import Footer from "./layouts/footer/Footer";
 import Menu from "./layouts/menu/Menu";
@@ -26,8 +26,17 @@ function App() {
   useEffect(() => {
     const refresh = () => ScrollTrigger.refresh();
     window.addEventListener("load", refresh);
+    document.fonts?.ready.then(refresh);
     return () => window.removeEventListener("load", refresh);
   }, []);
+
+  const location = useLocation();
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 100);
+    return () => clearTimeout(timeout);
+  }, [location.pathname]);
 
   // headerのアニメーション
   const ref = useRef<HTMLDivElement>(null);
