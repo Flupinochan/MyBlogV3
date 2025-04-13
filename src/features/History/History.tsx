@@ -1,6 +1,6 @@
 const History = () => {
   return (
-    <div>History</div>
+    <div>作成中...</div>
   )
 }
 

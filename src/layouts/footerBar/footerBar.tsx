@@ -1,10 +1,7 @@
 import { useRef } from "react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import styles from "./footerBar.module.css";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const FooterBar: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null);

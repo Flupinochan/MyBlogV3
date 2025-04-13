@@ -1,8 +1,6 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-gsap.registerPlugin(ScrollTrigger);
-
 export interface ScrollFadeIn3Config {
   duration: number;
   top: string;
