@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Outlet } from "react-router-dom";
 import Header from "./layouts/header/Header";
 import Footer from "./layouts/footer/Footer";
@@ -19,6 +19,16 @@ gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(TextPlugin);
 
 function App() {
+  useEffect(() => {
+    const handleLoad = () => {
+      ScrollTrigger.refresh(); // ScrollTriggerを再計算
+    };
+    window.addEventListener("load", handleLoad);
+    return () => {
+      window.removeEventListener("load", handleLoad);
+    };
+  }, []);
+
   const ref = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
@@ -36,7 +46,6 @@ function App() {
         self.direction === -1 ? showAnim.play() : showAnim.reverse();
       }
     });
-    ScrollTrigger.refresh();
 
   });
 

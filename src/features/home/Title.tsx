@@ -6,7 +6,6 @@ import CustomAnchor from "../../components/CustomAnchor";
 import { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const Title = () => {
 
@@ -15,8 +14,6 @@ const Title = () => {
     gsap.effects.scrollFadeIn2(ref.current, {});
     gsap.effects.scrollFadeIn(".scrollFadeIn", { scope: ref.current });
     gsap.effects.textAnimation(".dummy", { scope: ref.current });
-
-    ScrollTrigger.refresh();
   }, { scope: ref });
 
   return (

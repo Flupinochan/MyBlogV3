@@ -15,7 +15,6 @@ import { notifications } from '@mantine/notifications';
 import { useRef } from "react";
 import gsap from 'gsap';
 import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 // バリデーション
 const validationSchema = z.object({
@@ -30,8 +29,6 @@ const Contact = () => {
   useGSAP((_context, _contextSafe) => {
     gsap.effects.scrollFadeIn2(ref.current, {});
     gsap.effects.scrollFadeIn(".scrollFadeIn", { scope: ref.current });
-
-    ScrollTrigger.refresh();
   }, { scope: ref });
 
   // Modal

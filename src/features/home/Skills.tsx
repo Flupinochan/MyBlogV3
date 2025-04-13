@@ -8,7 +8,6 @@ import styles from "./Skills.module.css";
 import { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const Skills = () => {
 
@@ -18,8 +17,6 @@ const Skills = () => {
     gsap.effects.scrollFadeIn2(ref.current, {});
     // 親要素内にある.scrollFadeInに適用
     gsap.effects.scrollFadeIn(".scrollFadeIn", { scope: ref.current });
-
-    ScrollTrigger.refresh(); // スクロール位置を再計算
   }, { scope: ref });
 
   return (
