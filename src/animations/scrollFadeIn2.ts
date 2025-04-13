@@ -31,7 +31,7 @@ gsap.registerEffect({
           start: config.top,
           end: "bottom 50%",
           scrub: false,
-          markers: true,
+          markers: false,
           onEnter: () => {
             gsap.to(el, { opacity: 1, duration: config.duration });
           },
@@ -50,7 +50,7 @@ gsap.registerEffect({
           start: config.top,
           end: "bottom 50%",
           scrub: false,
-          markers: true,
+          markers: false,
           // 下方向スクロールアニメーション
           onEnter: () => {
             gsap.to(el, { opacity: 1, duration: config.duration });

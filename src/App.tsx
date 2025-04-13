@@ -6,6 +6,7 @@ import styles from "./App.module.css";
 // gsapインポート
 import "./animations/scrollFadeIn";
 import "./animations/scrollFadeIn2";
+import "./animations/scrollFadeIn3";
 import FooterBar from "./layouts/footerBar/footerBar";
 
 function App() {

@@ -3,10 +3,21 @@ import titleImage from "../../assets/home_title.png";
 import titleStyles from "./Title.module.css";
 import indexStyles from "../../index.module.css";
 import CustomAnchor from "../../components/CustomAnchor";
+import { useRef } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 
 const Title = () => {
+
+  const ref = useRef<HTMLDivElement>(null);
+  useGSAP((_context, _contextSafe) => {
+    // 親要素に適用
+    gsap.effects.scrollFadeIn2(ref.current, {});
+    gsap.effects.scrollFadeIn(".scrollFadeIn", { scope: ref.current });
+  }, { scope: ref });
+
   return (
-    <Grid gutter={0} grow className={titleStyles.titleGrid}
+    <Grid ref={ref} gutter={0} grow className={`${titleStyles.titleGrid} scrollFadeIn2`}
       breakpoints={{ xs: '0px', sm: '0px', md: '768px', lg: '0px', xl: '0px' }}>
       <GridCol span={{ base: 12, md: 8 }} className={titleStyles.firstCol}>
         <Stack justify="space-around" style={{ height: "100%" }}>
