@@ -29,7 +29,9 @@ gsap.registerEffect({
           start: config.top,
           end: "bottom 50%",
           scrub: false,
-          markers: false,
+          markers: {
+            startColor: "blue"
+          },
           invalidateOnRefresh: true,
           onEnter: () => {
             gsap.to(el, { opacity: 1, duration: config.duration });
@@ -49,7 +51,9 @@ gsap.registerEffect({
           start: config.top,
           end: "bottom 50%",
           scrub: false,
-          markers: false,
+          markers: {
+            startColor: "blue"
+          },
           invalidateOnRefresh: true,
           // 下方向スクロールアニメーション
           onEnter: () => {
