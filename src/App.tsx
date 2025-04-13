@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import { Outlet } from "react-router-dom";
 import Header from "./layouts/header/Header";
 import Footer from "./layouts/footer/Footer";
@@ -23,7 +23,7 @@ ScrollTrigger.config({
 });
 
 function App() {
-  useEffect(() => {
+  useLayoutEffect(() => {
     const handleLoad = () => {
       setTimeout(() => {
         ScrollTrigger.refresh();
