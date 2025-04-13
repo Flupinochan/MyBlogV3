@@ -16,9 +16,8 @@ const FooterBar: React.FC = () => {
     });
 
     ScrollTrigger.create({
-      trigger: document.body,
-      start: "top top",
-      end: "bottom bottom",
+      start: 0,
+      end: () => document.documentElement.scrollHeight - window.innerHeight,
       scrub: true,
       invalidateOnRefresh: true,
       onUpdate: (self) => {
@@ -32,7 +31,10 @@ const FooterBar: React.FC = () => {
       },
     });
 
+    ScrollTrigger.refresh();
+
   }, { scope: ref });
+
 
   return (
     <div className={styles.container}>

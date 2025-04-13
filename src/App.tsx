@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Outlet } from "react-router-dom";
 import Header from "./layouts/header/Header";
 import Footer from "./layouts/footer/Footer";
@@ -23,20 +23,14 @@ ScrollTrigger.config({
 });
 
 function App() {
-  useLayoutEffect(() => {
-    const handleLoad = () => {
-      setTimeout(() => {
-        ScrollTrigger.refresh();
-      }, 1000);
-    };
-    window.addEventListener("load", handleLoad);
-    return () => {
-      window.removeEventListener("load", handleLoad);
-    };
+  useEffect(() => {
+    const refresh = () => ScrollTrigger.refresh();
+    window.addEventListener("load", refresh);
+    return () => window.removeEventListener("load", refresh);
   }, []);
 
+  // headerのアニメーション
   const ref = useRef<HTMLDivElement>(null);
-
   useGSAP(() => {
     const showAnim = gsap.from(ref.current, {
       yPercent: -100, // 上に100%隠す
@@ -52,8 +46,7 @@ function App() {
         self.direction === -1 ? showAnim.play() : showAnim.reverse();
       }
     });
-
-  });
+  }, { scope: ref });
 
   return (
     <>
