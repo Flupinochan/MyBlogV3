@@ -5,15 +5,25 @@
   padding-right: clamp(0.313rem, -1.478rem + 5.73vw, 2.5rem);
 }
 
-/* 768px以下でカラムの順番を入れ替え */
+.square {
+  margin-right: 0.8rem;
+  height: 100%;
+  width: 1.2rem;
+  border: 0.1rem solid var(--bg-color);
+}
+
+/* 768px以下でカラムの順番を入れ替えはしない。
+動的に入れ替えることは可能だが、画面がちらつくため良くない
+要素の動的入れ替えによりアニメーションも不安定になる気がする
+そもそも対した量のコードでもないため問題ない*/
 @media (max-width: 768px) {
-  .firstCol {
+  /* .firstCol {
     order: 2;
   }
 
   .secondCol {
     order: 1;
-  }
+  } */
 
   .miniText {
     display: none;
@@ -28,11 +38,4 @@
     display: flex;
     justify-content: center;
   }
-}
-
-.square {
-  margin-right: 0.8rem;
-  height: 100%;
-  width: 1.2rem;
-  border: 0.1rem solid var(--bg-color);
 }
