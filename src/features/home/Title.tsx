@@ -12,7 +12,7 @@ const Title = () => {
 
   const ref = useRef<HTMLDivElement>(null);
   useGSAP((_context, _contextSafe) => {
-    gsap.effects.fadeIn(ref.current, { scope: ref.current });
+    // gsap.effects.fadeIn(ref.current, { scope: ref.current });
     gsap.effects.textAnimation(".dummy", { scope: ref.current });
     ScrollTrigger.refresh();
   }, { scope: ref });
