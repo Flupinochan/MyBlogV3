@@ -17,7 +17,8 @@
 要素の動的入れ替えによりアニメーションも不安定になる気がする
 そもそも対した量のコードでもないため問題ない
 useLayoutEffectや要素のwrapなどを検知するeventListenerでScrollTrigger.refresh()で解決するかもしれない
-もしくは、Imageの読み込みが遅いから、onLoad={() => ScrollTrigger.refresh()}を入れる?*/
+★Imageの読み込みが遅いから、onLoad={() => ScrollTrigger.refresh()}を入れる?
+複数の画像がある場合は、imagesLoadedライブラリの使用も良いかもしれない*/
 @media (max-width: 768px) {
   /* .firstCol {
     order: 2;

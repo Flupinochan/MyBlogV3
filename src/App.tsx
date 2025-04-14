@@ -5,7 +5,6 @@ import Footer from "./layouts/footer/Footer";
 import Menu from "./layouts/menu/Menu";
 import FooterBar from "./layouts/footerBar/footerBar";
 import styles from "./App.module.css";
-// gsapインポート
 import "./animations/fadeIn";
 import "./animations/scrollFadeIn";
 import "./animations/scrollMoveYFadeIn";
@@ -15,6 +14,7 @@ import { gsap } from 'gsap';
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { TextPlugin } from 'gsap/TextPlugin';
+import imagesLoaded from 'imagesloaded';
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(TextPlugin);
@@ -24,6 +24,25 @@ ScrollTrigger.config({
 });
 
 function App() {
+  // App 全体を包むコンテナの ref
+  const appRef = useRef<HTMLDivElement>(null);
+
+  // 全画像読み込み完了後に ScrollTrigger.refresh() を実行
+  useEffect(() => {
+    if (appRef.current) {
+      const imgLoad = imagesLoaded(appRef.current);
+      const doneCallback = () => {
+        ScrollTrigger.refresh();
+      };
+      imgLoad.on('done', doneCallback);
+      return () => {
+        imgLoad.off('done', doneCallback);
+      };
+    }
+  }, []);
+
+
+  // window load と fonts.ready によるリフレッシュ
   useEffect(() => {
     const refresh = () => ScrollTrigger.refresh();
     window.addEventListener("load", refresh);
@@ -39,15 +58,14 @@ function App() {
     return () => clearTimeout(timeout);
   }, [location.pathname]);
 
-  // headerのアニメーション
-  const ref = useRef<HTMLDivElement>(null);
+  // header のアニメーション
+  const headerRef = useRef<HTMLDivElement>(null);
   useGSAP(() => {
-    const showAnim = gsap.from(ref.current, {
-      yPercent: -100, // 上に100%隠す
-      paused: true,   // 最初はアニメーションを自動再生しない
+    const showAnim = gsap.from(headerRef.current, {
+      yPercent: -100,
+      paused: true,
       duration: 0.2
-    }).progress(1);   // アニメーションを完了状態（上に隠れた状態）にしておく
-
+    }).progress(1);
     ScrollTrigger.create({
       start: "top top",
       end: "max",
@@ -56,19 +74,19 @@ function App() {
         self.direction === -1 ? showAnim.play() : showAnim.reverse();
       }
     });
-  }, { scope: ref });
+  }, { scope: headerRef });
 
   return (
-    <>
-      <div className={styles.stickyHeader} ref={ref}>
+    <div ref={appRef}>
+      <div className={styles.stickyHeader} ref={headerRef}>
         <Header />
         <Menu />
       </div>
-      {/* Outletにルーティングされたページが表示 */}
+      {/* Outlet にルーティングされたページが表示 */}
       <Outlet />
       <Footer />
       <FooterBar />
-    </>
+    </div>
   );
 }
 
