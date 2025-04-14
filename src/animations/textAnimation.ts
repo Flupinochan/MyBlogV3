@@ -23,10 +23,10 @@ gsap.registerEffect({
       const renderText3 = "フロントエンドからバックエンド、インフラまで手掛けるメタルなメンタルを持つエンジニアです";
 
       const tl = gsap.timeline({
-        onComplete: () => {
-          // 要素のサイズが変わった後には、スクロールトリガーを再計算する
-          ScrollTrigger.refresh();
-        }
+        // onComplete: () => {
+        //   // 要素のサイズが変わった後には、スクロールトリガーを再計算する
+        //   ScrollTrigger.refresh();
+        // }
       });
       tl.set(".contactMeAnimation", {
         opacity: 0,
