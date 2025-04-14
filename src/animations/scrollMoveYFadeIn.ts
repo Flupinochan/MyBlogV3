@@ -31,7 +31,7 @@ gsap.registerEffect({
           start: config.top,
           end: "bottom 50%",
           scrub: false,
-          markers: true,
+          markers: false,
           invalidateOnRefresh: true,
           scroller: document.body,
           onEnter: () => {
@@ -49,7 +49,7 @@ gsap.registerEffect({
           start: config.top,
           end: "bottom 50%",
           scrub: false,
-          markers: true,
+          markers: false,
           invalidateOnRefresh: true,
           scroller: document.body,
           onLeaveBack: () => {
@@ -75,7 +75,7 @@ gsap.registerEffect({
           start: config.top,
           end: "bottom 50%",
           scrub: false,
-          markers: true,
+          markers: false,
           invalidateOnRefresh: true,
           scroller: document.body,
           onEnter: () => {
@@ -92,7 +92,7 @@ gsap.registerEffect({
           start: config.top,
           end: "bottom 50%",
           scrub: false,
-          markers: true,
+          markers: false,
           invalidateOnRefresh: true,
           scroller: document.body,
           onLeaveBack: () => {
