@@ -25,7 +25,7 @@ const Title = () => {
         // モバイル：画像を上に、テキストを下にレンダリング
         <>
           <GridCol span={12} className={titleStyles.secondCol}>
-            <Image src={titleImage} alt="title image" />
+            <Image src={titleImage} alt="title image" onLoad={() => ScrollTrigger.refresh()} />
           </GridCol>
           <GridCol span={12} className={titleStyles.firstCol}>
             <Stack justify="space-around" style={{ height: "100%" }}>
@@ -72,7 +72,7 @@ const Title = () => {
             </Stack>
           </GridCol>
           <GridCol span={{ base: 12, md: 4 }} className={titleStyles.secondCol}>
-            <Image src={titleImage} alt="title image" />
+            <Image src={titleImage} alt="title image" onLoad={() => ScrollTrigger.refresh()} />
           </GridCol>
         </>
       )}
