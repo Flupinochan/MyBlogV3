@@ -60,6 +60,7 @@ gsap.registerEffect({
             opacity: 1,
             duration: config.duration,
             stagger: config.stagger,
+            overwrite: "auto"
           });
         },
       });

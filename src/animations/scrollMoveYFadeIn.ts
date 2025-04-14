@@ -7,8 +7,6 @@ export interface ScrollMoveYFadeInConfig {
   top: string;
 }
 
-let fadeOutTween: gsap.core.Tween | null = null;
-
 gsap.registerEffect({
   name: "scrollMoveYFadeIn",
   extendTimeline: false,
@@ -21,6 +19,7 @@ gsap.registerEffect({
     const targets: HTMLDivElement[] = gsap.utils.toArray(elements);
 
     targets.forEach((el) => {
+      let fadeOutTween: gsap.core.Tween | null = null;
       // 初期状態は、下に200px、見えない状態
       gsap.set(el, { y: 200, opacity: 0 });
       const mm = gsap.matchMedia();
@@ -33,7 +32,6 @@ gsap.registerEffect({
           scrub: false,
           markers: false,
           invalidateOnRefresh: true,
-          scroller: document.body,
           onEnter: () => {
             if (fadeOutTween && fadeOutTween.isActive()) {
               fadeOutTween.kill();
@@ -51,7 +49,6 @@ gsap.registerEffect({
           scrub: false,
           markers: false,
           invalidateOnRefresh: true,
-          scroller: document.body,
           onLeaveBack: () => {
             fadeOutTween = gsap.to(el, {
               opacity: 0,
@@ -77,13 +74,17 @@ gsap.registerEffect({
           scrub: false,
           markers: false,
           invalidateOnRefresh: true,
-          scroller: document.body,
           onEnter: () => {
             if (fadeOutTween && fadeOutTween.isActive()) {
               fadeOutTween.kill();
               fadeOutTween = null;
             }
-            gsap.to(el, { y: 0, opacity: 1, duration: config.duration });
+            gsap.to(el, {
+              y: 0,
+              opacity: 1,
+              duration: config.duration,
+              overwrite: "auto"
+            });
           }
         });
 
@@ -94,7 +95,6 @@ gsap.registerEffect({
           scrub: false,
           markers: false,
           invalidateOnRefresh: true,
-          scroller: document.body,
           onLeaveBack: () => {
             fadeOutTween = gsap.to(el, {
               opacity: 0,

@@ -59,7 +59,12 @@ gsap.registerEffect({
           invalidateOnRefresh: true,
           // 下方向スクロールアニメーション
           onEnter: () => {
-            gsap.to(el, { opacity: 1, duration: config.duration, ease: config.ease });
+            gsap.to(el, {
+              opacity: 1,
+              duration: config.duration,
+              ease: config.ease,
+              overwrite: "auto"
+            });
           },
           // 上方向スクロールアニメーション
           onLeaveBack: () => {
