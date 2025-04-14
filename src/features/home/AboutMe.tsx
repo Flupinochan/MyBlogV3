@@ -12,7 +12,7 @@ const AboutMe = () => {
 
   const ref = useRef<HTMLDivElement>(null);
   useGSAP((_context, _contextSafe) => {
-    gsap.effects.scrollFadeIn(ref.current, {});
+    gsap.effects.scrollFadeIn(ref.current, { scope: ref.current });
     gsap.effects.scrollMoveYFadeIn(".scrollMoveYFadeIn", { scope: ref.current });
     ScrollTrigger.refresh();
   }, { scope: ref });
