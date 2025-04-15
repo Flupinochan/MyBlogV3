@@ -4,17 +4,21 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 export interface ScrollMoveYFadeInConfig {
   duration: number;
   durationBack: number;
-  top: string;
+  ease: string;
+  start: string;
+  mobileStart: string;
 }
 
 gsap.registerEffect({
   name: "scrollMoveYFadeIn",
   extendTimeline: false,
   defaults: {
-    duration: 0.5,
+    duration: 0.75,
     durationBack: 1,
-    top: "top 80%"
-  },
+    ease: "power4.out",
+    start: "top 80%",
+    mobileStart: "top 95%"
+  } as ScrollMoveYFadeInConfig,
   effect: (elements: gsap.TweenTarget, config: ScrollMoveYFadeInConfig) => {
     const targets: HTMLDivElement[] = gsap.utils.toArray(elements);
 
@@ -27,10 +31,9 @@ gsap.registerEffect({
       mm.add("(min-width: 769px)", () => {
         const trigger1 = ScrollTrigger.create({
           trigger: el,
-          start: config.top,
-          end: "bottom 50%",
+          start: config.start,
           scrub: false,
-          markers: false,
+          markers: true,
           invalidateOnRefresh: true,
           onEnter: () => {
             if (fadeOutTween && fadeOutTween.isActive()) {
@@ -44,10 +47,9 @@ gsap.registerEffect({
 
         const trigger2 = ScrollTrigger.create({
           trigger: el,
-          start: config.top,
-          end: "bottom 50%",
+          start: config.start,
           scrub: false,
-          markers: false,
+          markers: true,
           invalidateOnRefresh: true,
           onLeaveBack: () => {
             fadeOutTween = gsap.to(el, {
@@ -69,10 +71,9 @@ gsap.registerEffect({
       mm.add("(max-width: 768px)", () => {
         const trigger1 = ScrollTrigger.create({
           trigger: el,
-          start: config.top,
-          end: "bottom 50%",
+          start: config.mobileStart,
           scrub: false,
-          markers: false,
+          markers: true,
           invalidateOnRefresh: true,
           onEnter: () => {
             if (fadeOutTween && fadeOutTween.isActive()) {
@@ -90,10 +91,9 @@ gsap.registerEffect({
 
         const trigger2 = ScrollTrigger.create({
           trigger: el,
-          start: config.top,
-          end: "bottom 50%",
+          start: config.mobileStart,
           scrub: false,
-          markers: false,
+          markers: true,
           invalidateOnRefresh: true,
           onLeaveBack: () => {
             fadeOutTween = gsap.to(el, {

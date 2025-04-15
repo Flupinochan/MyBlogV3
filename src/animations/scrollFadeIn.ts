@@ -3,8 +3,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 export interface ScrollFadeInConfig {
   duration: number;
-  top: string;
   ease: string;
+  start: string;
 }
 
 gsap.registerEffect({
@@ -12,9 +12,9 @@ gsap.registerEffect({
   extendTimeline: false,
   defaults: {
     duration: 1,
-    top: "top 90%",
-    ease: "sine.out"
-  },
+    start: "top 80%", // "要素のトリガー位置, スクロールバーの位置"
+    ease: "power1.inOut"
+  } as ScrollFadeInConfig,
   effect: (elements: gsap.TweenTarget, config: ScrollFadeInConfig) => {
     const targets: HTMLDivElement[] = gsap.utils.toArray(elements);
 
@@ -28,12 +28,11 @@ gsap.registerEffect({
         // 下スクロール時：フェードイン
         ScrollTrigger.create({
           trigger: el,
-          start: config.top,
-          end: "bottom 50%",
+          start: config.start,
           scrub: false,
-          // markers: {
-          //   startColor: "blue"
-          // },
+          markers: {
+            startColor: "blue"
+          },
           invalidateOnRefresh: true,
           onEnter: () => {
             gsap.to(el, { opacity: 1, duration: config.duration, ease: config.ease });
@@ -50,12 +49,11 @@ gsap.registerEffect({
         // 下スクロール時：フェードイン
         ScrollTrigger.create({
           trigger: el,
-          start: config.top,
-          end: "bottom 50%",
+          start: config.start,
           scrub: false,
-          // markers: {
-          //   startColor: "blue"
-          // },
+          markers: {
+            startColor: "blue"
+          },
           invalidateOnRefresh: true,
           // 下方向スクロールアニメーション
           onEnter: () => {

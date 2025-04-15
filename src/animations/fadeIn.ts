@@ -2,7 +2,6 @@ import { gsap } from 'gsap';
 
 export interface FadeInConfig {
   duration: number;
-  top: string;
   ease: string;
 }
 
@@ -11,9 +10,8 @@ gsap.registerEffect({
   extendTimeline: false,
   defaults: {
     duration: 1,
-    top: "top 90%",
-    ease: "sine.out"
-  },
+    ease: "power1.inOut"
+  } as FadeInConfig,
   effect: (elements: gsap.TweenTarget, config: FadeInConfig) => {
     const targets: HTMLDivElement[] = gsap.utils.toArray(elements);
 
