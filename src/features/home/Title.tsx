@@ -1,5 +1,4 @@
 import { Flex, Grid, GridCol, Image, Stack } from "@mantine/core";
-import { useMediaQuery } from "@mantine/hooks";
 import titleImage from "../../assets/home_title.png";
 import titleStyles from "./Title.module.css";
 import indexStyles from "../../index.module.css";

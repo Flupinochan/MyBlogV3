@@ -12,13 +12,11 @@
   border: 0.1rem solid var(--bg-color);
 }
 
-/* 768px以下でカラムの順番を入れ替えはしない。
-動的に入れ替えることは可能だが、画面がちらつくため良くない
-要素の動的入れ替えによりアニメーションも不安定になる気がする
-そもそも対した量のコードでもないため問題ない
+/* 
 useLayoutEffectや要素のwrapなどを検知するeventListenerでScrollTrigger.refresh()で解決するかもしれない
 ★Imageの読み込みが遅いから、onLoad={() => ScrollTrigger.refresh()}を入れる?
-複数の画像がある場合は、imagesLoadedライブラリの使用も良いかもしれない*/
+複数の画像がある場合は、imagesLoadedライブラリの使用も良いかもしれない
+*/
 @media (max-width: 768px) {
   .firstCol {
     order: 2;
