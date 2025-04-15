@@ -20,13 +20,13 @@ useLayoutEffectや要素のwrapなどを検知するeventListenerでScrollTrigge
 ★Imageの読み込みが遅いから、onLoad={() => ScrollTrigger.refresh()}を入れる?
 複数の画像がある場合は、imagesLoadedライブラリの使用も良いかもしれない*/
 @media (max-width: 768px) {
-  /* .firstCol {
+  .firstCol {
     order: 2;
   }
 
   .secondCol {
     order: 1;
-  } */
+  }
 
   .miniText {
     display: none;
