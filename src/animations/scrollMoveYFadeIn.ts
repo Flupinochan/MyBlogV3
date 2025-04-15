@@ -33,7 +33,7 @@ gsap.registerEffect({
           trigger: el,
           start: config.start,
           scrub: false,
-          markers: true,
+          markers: false,
           invalidateOnRefresh: true,
           onEnter: () => {
             if (fadeOutTween && fadeOutTween.isActive()) {
@@ -49,7 +49,7 @@ gsap.registerEffect({
           trigger: el,
           start: config.start,
           scrub: false,
-          markers: true,
+          markers: false,
           invalidateOnRefresh: true,
           onLeaveBack: () => {
             fadeOutTween = gsap.to(el, {
@@ -73,7 +73,7 @@ gsap.registerEffect({
           trigger: el,
           start: config.mobileStart,
           scrub: false,
-          markers: true,
+          markers: false,
           invalidateOnRefresh: true,
           onEnter: () => {
             if (fadeOutTween && fadeOutTween.isActive()) {
@@ -93,7 +93,7 @@ gsap.registerEffect({
           trigger: el,
           start: config.mobileStart,
           scrub: false,
-          markers: true,
+          markers: false,
           invalidateOnRefresh: true,
           onLeaveBack: () => {
             fadeOutTween = gsap.to(el, {
