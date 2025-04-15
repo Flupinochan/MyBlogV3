@@ -40,14 +40,13 @@ gsap.registerEffect({
           delimiter: '',
           // speed: 0.5, // 1文字を表示する間隔 ※durationは自動で計算
         },
-        ease: 'power2.out',
+        delay: 0.75,
         duration: 1.5, // 文字全体が表示されるまでの時間 ※speedは自動で計算
       }).to(".pTextAnimation", {
         text: {
           value: renderText3,
           delimiter: '',
         },
-        ease: 'power2.out',
         delay: 0.3,
         duration: 1,
       }).to(".h1TextAnimation", {

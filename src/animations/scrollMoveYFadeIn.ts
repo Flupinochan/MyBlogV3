@@ -41,7 +41,12 @@ gsap.registerEffect({
               fadeOutTween = null;
             }
             // 上に移動してフェードイン
-            gsap.to(el, { y: 0, opacity: 1, duration: config.duration });
+            gsap.to(el, {
+              y: 0,
+              opacity: 1,
+              duration: config.duration,
+              ease: config.ease,
+            });
           }
         });
 
@@ -84,6 +89,7 @@ gsap.registerEffect({
               y: 0,
               opacity: 1,
               duration: config.duration,
+              ease: config.ease,
               overwrite: "auto"
             });
           }
