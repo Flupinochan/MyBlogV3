@@ -9,7 +9,7 @@ gsap.registerEffect({
   name: "fadeIn",
   extendTimeline: false,
   defaults: {
-    duration: 1,
+    duration: 0.75,
     ease: "power1.inOut"
   } as FadeInConfig,
   effect: (elements: gsap.TweenTarget, config: FadeInConfig) => {
