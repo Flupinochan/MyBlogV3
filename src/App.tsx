@@ -15,6 +15,7 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { TextPlugin } from 'gsap/TextPlugin';
 import imagesLoaded from 'imagesloaded';
+import { ScrollToTop } from "./layouts/scrollToTop/ScrollToTop";
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(TextPlugin);
@@ -78,6 +79,7 @@ function App() {
 
   return (
     <div ref={appRef}>
+      <ScrollToTop />
       <div className={styles.stickyHeader} ref={headerRef}>
         <Header />
         <Menu />
