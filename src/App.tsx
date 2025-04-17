@@ -4,6 +4,8 @@ import Header from "./layouts/header/Header";
 import Footer from "./layouts/footer/Footer";
 import Menu from "./layouts/menu/Menu";
 import FooterBar from "./layouts/footerBar/footerBar";
+import ScrollToTop from "./layouts/scrollToTop/ScrollToTop";
+import imagesLoaded from 'imagesloaded';
 import styles from "./App.module.css";
 import "./animations/fadeIn";
 import "./animations/scrollFadeIn";
@@ -12,13 +14,11 @@ import "./animations/scrollMoveXFadeIn";
 import "./animations/textAnimation";
 import { gsap } from 'gsap';
 import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { TextPlugin } from 'gsap/TextPlugin';
-import imagesLoaded from 'imagesloaded';
-import { ScrollToTop } from "./layouts/scrollToTop/ScrollToTop";
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
-gsap.registerPlugin(ScrollTrigger);
-gsap.registerPlugin(TextPlugin);
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, TextPlugin);
 
 ScrollTrigger.config({
   autoRefreshEvents: "resize,visibilitychange,DOMContentLoaded,load"
@@ -59,7 +59,7 @@ function App() {
     return () => clearTimeout(timeout);
   }, [location.pathname]);
 
-  // header のアニメーション
+  // header の表示/非表示アニメーション
   const headerRef = useRef<HTMLDivElement>(null);
   useGSAP(() => {
     const showAnim = gsap.from(headerRef.current, {

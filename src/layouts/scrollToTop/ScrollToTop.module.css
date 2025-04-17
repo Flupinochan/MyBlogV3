@@ -1,0 +1,7 @@
+.buttonStyle {
+  position: fixed;
+  z-index: 100;
+  cursor: pointer;
+  bottom: 5rem;
+  right: 5rem;
+}
