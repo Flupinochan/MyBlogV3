@@ -2,7 +2,7 @@ import type { APIGatewayProxyHandler, APIGatewayProxyEvent, APIGatewayProxyResul
 import { NodeHttpHandler } from "@aws-sdk/node-http-handler";
 import { AmplifyClient, ListDomainAssociationsCommand, ListBranchesCommand, ListDomainAssociationsCommandOutput, ListBranchesCommandOutput, DomainAssociation, Branch } from "@aws-sdk/client-amplify";
 import { DateTime } from "luxon";
-import { BranchInfoMap } from "../../../src/interfaces/BlogVersionInterface";
+import { IBlogVersion } from "../../../src/interfaces/BlogVersionInterface";
 
 const config = {
   maxAttempts: 30,
@@ -20,7 +20,7 @@ const amplifyApplicationId = "d25csu3vso9tmw";
  * @returns 
  */
 export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
-  let response: BranchInfoMap[] = [];
+  let response: IBlogVersion[] = [];
   let statusCode = 400;
 
   try {
@@ -95,9 +95,9 @@ const paginateListBranches = async () => {
 function extractBranchFQDNsWithUpdateTime(
   branchesDomains: DomainAssociation[],
   branchesUpdateTime: Branch[]
-): BranchInfoMap[] {
+): IBlogVersion[] {
 
-  const result: BranchInfoMap[] = [];
+  const result: IBlogVersion[] = [];
   const domainName = branchesDomains?.[0]?.domainName ?? '';
 
   const updateTimeMap: Record<string, string> = {};
