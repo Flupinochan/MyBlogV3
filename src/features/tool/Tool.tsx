@@ -23,7 +23,7 @@ const Tool = () => {
 
   const ref = useRef<HTMLDivElement>(null);
   useGSAP((_context, _contextSafe) => {
-    gsap.effects.fadeIn(ref.current, {});
+    gsap.effects.fadeIn(ref.current, { scope: ref.current });
     gsap.effects.scrollMoveXFadeIn(".scrollMoveXFadeIn", { scope: ref.current });
     ScrollTrigger.refresh();
   }, { scope: ref, dependencies: [data] });

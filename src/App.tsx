@@ -11,6 +11,7 @@ import "./animations/scrollFadeIn";
 import "./animations/scrollMoveYFadeIn";
 import "./animations/scrollMoveXFadeIn";
 import "./animations/textAnimation";
+import "./animations/textAnimation2";
 import "./animations/headerAnimation";
 import { gsap } from 'gsap';
 import { useGSAP } from "@gsap/react";
