@@ -11,6 +11,7 @@
   z-index: 100;
   right: var(--html-margin);
   bottom: 20%;
+  opacity: 0;
 }
 
 .btn:after {
