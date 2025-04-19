@@ -1,5 +1,5 @@
 import type { APIGatewayProxyHandler, APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
-import { IContactRequest, IContactResponse } from '../../../src/shared/interfaces/ContactInterface';
+import { IContactRequest, IContactResponse } from "../../../src/interfaces/ContactInterface";
 import { NodeHttpHandler } from "@aws-sdk/node-http-handler";
 import { SESv2Client, SendEmailCommand, SendEmailCommandInput, SendEmailCommandOutput } from "@aws-sdk/client-sesv2";
 

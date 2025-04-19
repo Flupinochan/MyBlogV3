@@ -54,7 +54,7 @@ const BlogVersion: React.FC<Props> = ({ data }) => {
 
   return (
     <Stack className="scrollMoveXFadeIn">
-      <H4 text="Version" />
+      <H4 text="Release" />
       <div className={toolStyles.listMarker}>
         <Table>
           <Table.Thead>

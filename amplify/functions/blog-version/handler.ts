@@ -2,7 +2,7 @@ import type { APIGatewayProxyHandler, APIGatewayProxyEvent, APIGatewayProxyResul
 import { NodeHttpHandler } from "@aws-sdk/node-http-handler";
 import { AmplifyClient, ListDomainAssociationsCommand, ListBranchesCommand, ListDomainAssociationsCommandOutput, ListBranchesCommandOutput, DomainAssociation, Branch } from "@aws-sdk/client-amplify";
 import { DateTime } from "luxon";
-import { BranchInfoMap } from '../../../src/shared/interfaces/BlogVersionInterface';
+import { BranchInfoMap } from "../../../src/interfaces/BlogVersionInterface";
 
 const config = {
   maxAttempts: 30,
