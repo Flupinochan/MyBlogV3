@@ -17,8 +17,8 @@ const Menu = () => {
           </NavLink>
         </GridCol>
         <GridCol span={3}>
-          <NavLink to="history" className={({ isActive }) => `${styles.menu} ${isActive ? styles.active : ""}`.trim()}>
-            History
+          <NavLink to="profile" className={({ isActive }) => `${styles.menu} ${isActive ? styles.active : ""}`.trim()}>
+            Profile
           </NavLink>
         </GridCol>
         <GridCol span={3}>

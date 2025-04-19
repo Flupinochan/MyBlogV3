@@ -14,7 +14,7 @@ import Tool from "./features/tool/Tool.tsx";
 import Error from "./layouts/error/Error.tsx";
 import { Notifications } from '@mantine/notifications';
 import SwaggerUi from "./features/tool/components/swagger/SwaggerUi.tsx";
-import History from "./features/history/History.tsx";
+import Profile from "./features/profile/Profile.tsx";
 
 
 const theme = createTheme({
@@ -62,7 +62,7 @@ const router = createBrowserRouter([
       { index: true, element: <Home />, errorElement: <Error /> },
       { path: "tool", element: <Tool />, errorElement: <Navigate to="/" replace /> },
       { path: "tool/swagger-ui", element: <SwaggerUi />, errorElement: <Navigate to="/" replace /> },
-      { path: "history", element: <History />, errorElement: <Navigate to="/" replace /> },
+      { path: "profile", element: <Profile />, errorElement: <Navigate to="/" replace /> },
       { path: "*", element: <Navigate to="/" replace /> }
     ]
   },

@@ -4,7 +4,6 @@ import { zodResolver } from 'mantine-form-zod-resolver';
 import { z } from 'zod';
 import { IContactRequest, IContactResponse } from '../../../interfaces/ContactInterface';
 import { useDisclosure } from '@mantine/hooks';
-import { useState } from 'react';
 import { notifications } from '@mantine/notifications';
 import { useRef } from "react";
 import gsap from 'gsap';

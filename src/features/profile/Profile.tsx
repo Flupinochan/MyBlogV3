@@ -7,7 +7,7 @@ import H2 from "../../components/H2";
 import skillStyles from "../home/skills/Skills.module.css";
 import toolStyles from "../tool/Tool.module.css";
 
-const groceries = [
+const profileItems = [
   {
     value: '名前',
     description: '川越 鉄郎 (かわごえ てつろう)',
@@ -30,11 +30,16 @@ const groceries = [
   },
   {
     value: '専門分野',
-    description: 'IaCとCI/CD',
+    description: 'IaC、CI/CD',
   },
   {
     value: '趣味',
-    description: 'B',
+    description: [
+      'ゲーム (World of Tanks)',
+      'アニメ (葬送のフリーレン)',
+      'モデリング (Blender、Live2D、The Sandbox、MagicaVoxel)',
+      '動画作成 (ゆっくりMovieMaker、Adobe Premiere Pro、MMD、GIMP)',
+    ].join('<br/>'),
   },
   {
     value: '資格',
@@ -55,18 +60,28 @@ const groceries = [
   {
     value: 'スキル',
     description: [
-      '',
+      '記載予定',
     ].join('<br/>'),
   },
   {
     value: 'ツール',
     description: [
-      '',
+      'IntelliJ IDEA',
+      'Visual Studio',
+      'Visual Studio Code',
+      'DBeaver',
+      'Git BASH',
+      'Vim',
+      'Unity',
+      'Postman',
+      'Figma',
+      'draw.io',
+      'RLogin'
     ].join('<br/>'),
   },
 ];
 
-const History = () => {
+const Profile = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const textRefs = useRef<(HTMLParagraphElement | null)[]>([]);
   useGSAP((_context, _contextSafe) => {
@@ -77,7 +92,7 @@ const History = () => {
 
   const [opened, setOpened] = useState<string | null>(null);
   const handleChange = (value: string | null) => {
-    const index = groceries.findIndex((item) => item.value === value);
+    const index = profileItems.findIndex((item) => item.value === value);
     if (index !== -1 && value !== opened) {
       const target = textRefs.current[index];
       if (target) {
@@ -94,7 +109,7 @@ const History = () => {
       <Stack className={skillStyles.section}>
         <H2 text="Profile" />
         <Accordion variant="default" chevronPosition="left" onChange={handleChange}>
-          {groceries.map((item, index) => (
+          {profileItems.map((item, index) => (
             <Accordion.Item key={item.value} value={item.value} className="scrollMoveXFadeIn">
               <Accordion.Control>
                 {item.value}
@@ -113,4 +128,4 @@ const History = () => {
   )
 }
 
-export default History
+export default Profile
