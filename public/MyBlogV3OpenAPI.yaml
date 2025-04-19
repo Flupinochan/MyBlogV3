@@ -1,7 +1,7 @@
 openapi: "3.0.1"
 info:
   title: "MyBlogV3"
-  version: "2025-04-19T03:02:55Z"
+  version: "2025-04-19T05:09:20Z"
 servers:
 - url: "https://49hzt8zwx0.execute-api.ap-northeast-1.amazonaws.com/{basePath}"
   variables:
@@ -244,11 +244,13 @@ components:
         email:
           type: "string"
     BlogVersionResponseModel:
-      type: "object"
-      additionalProperties:
+      type: "array"
+      items:
         type: "object"
         properties:
           fqdn:
+            type: "string"
+          branchName:
             type: "string"
           updateTime:
             type: "string"

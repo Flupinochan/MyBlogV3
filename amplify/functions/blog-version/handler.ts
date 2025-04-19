@@ -15,12 +15,12 @@ const amplifyClient = new AmplifyClient(config);
 const amplifyApplicationId = "d25csu3vso9tmw";
 
 /**
- * お問合せをEmail送信する
- * @param event name, email, messageの3つの引数
- * @returns ステータスコード 200 or 400
+ * AmplifyのBranchごとにデプロイされているブログのバージョンを取得する
+ * @param event 
+ * @returns 
  */
 export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
-  let response: BranchInfoMap = {};
+  let response: BranchInfoMap[] = [];
   let statusCode = 400;
 
   try {
@@ -95,9 +95,9 @@ const paginateListBranches = async () => {
 function extractBranchFQDNsWithUpdateTime(
   branchesDomains: DomainAssociation[],
   branchesUpdateTime: Branch[]
-): BranchInfoMap {
+): BranchInfoMap[] {
 
-  const result: BranchInfoMap = {};
+  const result: BranchInfoMap[] = [];
   const domainName = branchesDomains?.[0]?.domainName ?? '';
 
   const updateTimeMap: Record<string, string> = {};
@@ -112,10 +112,11 @@ function extractBranchFQDNsWithUpdateTime(
     // v数値-数値-数値 形式のドメインのみ取得 ※www.は除外
     if (/^v\d+-\d+-\d+/.test(prefix || '')) {
       // https://を付けたFQDNとJSTにしたupdateTimeのobjectを作成
-      result[branchName || ''] = {
+      result.push({
+        branchName: branchName || '',
         fqdn: `https://${prefix}.${domainName}`,
-        updateTime: updateTimeMap[branchName || '']
-      };
+        updateTime: updateTimeMap[branchName || ''] ?? null
+      });
     }
   });
 

@@ -4,7 +4,7 @@ import Header from "./layouts/header/Header";
 import Footer from "./layouts/footer/Footer";
 import Menu from "./layouts/menu/Menu";
 import FooterBar from "./layouts/footerBar/footerBar";
-import ScrollToTop from "./layouts/scrollToTop/ScrollToTop";
+import ScrollToTop from "./layouts/scroll-to-top/ScrollToTop";
 import styles from "./App.module.css";
 import "./animations/fadeIn";
 import "./animations/scrollFadeIn";
@@ -19,6 +19,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { useScrollTriggerEffects } from "./useScrollTriggerEffects";
+// import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 // Tanstack Queryキャッシュ設定
 const queryClient = new QueryClient()
@@ -55,6 +56,7 @@ function App() {
         <Footer />
         <FooterBar />
       </div>
+      {/* <ReactQueryDevtools initialIsOpen={false} /> */}
     </QueryClientProvider>
   );
 }

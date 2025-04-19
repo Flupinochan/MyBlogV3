@@ -71,16 +71,18 @@ export function configureApiGateway(backend: any) {
     contentType: 'application/json',
     modelName: 'BlogVersionResponseModel',
     schema: {
-      type: apigateway.JsonSchemaType.OBJECT,
-      additionalProperties: {
+      type: apigateway.JsonSchemaType.ARRAY,  // 配列型
+      items: {  // 配列の中身の型を定義
         type: apigateway.JsonSchemaType.OBJECT,
         properties: {
+          branchName: { type: apigateway.JsonSchemaType.STRING },
           fqdn: { type: apigateway.JsonSchemaType.STRING },
           updateTime: { type: apigateway.JsonSchemaType.STRING },
         },
       },
     },
   });
+
 
   // 8) メソッド定義
   contactPath.addMethod('POST', contactIntegration, {
