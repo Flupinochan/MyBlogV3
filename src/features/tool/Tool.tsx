@@ -15,7 +15,7 @@ import { getBlogVersion } from "../../api/getBlogVersion";
 import { BranchInfoMap } from "../../interfaces/BlogVersionInterface";
 
 const Tool = () => {
-  const { data } = useQuery<BranchInfoMap[]>({
+  const { data, isSuccess } = useQuery<BranchInfoMap[]>({
     queryKey: ["blogVersion"],
     queryFn: getBlogVersion,
   });
@@ -32,12 +32,16 @@ const Tool = () => {
       <div className={toolStyles.space} />
       <Stack className={skillStyles.section}>
         <H2 text="Tool" />
-        <Stack gap={30}>
-          <GoogleExtension />
-          <WindowsApp />
-          <Api />
-          <BlogVersion data={data} />
-        </Stack>
+        {isSuccess ? (
+          <Stack gap={30}>
+            <GoogleExtension />
+            <WindowsApp />
+            <Api />
+            <BlogVersion data={data} />
+          </Stack>
+        ) : (
+          <></>
+        )}
       </Stack>
     </section>
   )
