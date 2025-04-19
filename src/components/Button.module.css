@@ -35,3 +35,16 @@
 .btn:active {
   top: 2px;
 }
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.disabled:hover,
+.disabled:hover:after {
+  color: var(--bg-color);
+  background: transparent;
+  width: 0;
+}

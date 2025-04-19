@@ -50,8 +50,9 @@ const Contact = () => {
 
   // リクエスト処理
   const mutation = useMutation({
+    retry: 3,
     mutationFn: postContact,
-    onMutate: () => {
+    onMutate: async () => {
       notifications.show({
         title: "Sending",
         message: "メッセージを送信中...",
@@ -60,6 +61,7 @@ const Contact = () => {
         autoClose: false,
         withCloseButton: false,
       })
+      await new Promise(resolve => setTimeout(resolve, 1000));
     },
     onSuccess: (data: IContactResponse) => {
       setIsSucsess(true);
@@ -138,7 +140,7 @@ const Contact = () => {
                   key={form.key('message')}
                   {...form.getInputProps('message')} />
                 <div style={{ textAlign: "right" }}>
-                  <Button text='Submit' type='submit' />
+                  <Button text='Submit' type='submit' pending={mutation.isPending} />
                 </div>
               </Stack>
             </GridCol>
