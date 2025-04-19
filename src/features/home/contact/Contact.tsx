@@ -35,7 +35,6 @@ const Contact = () => {
 
   // Modal
   const [opened, { open, close }] = useDisclosure(false);
-  const [isSuccess, setIsSucsess] = useState(false);
 
   // From
   const form = useForm({
@@ -64,12 +63,10 @@ const Contact = () => {
       await new Promise(resolve => setTimeout(resolve, 1000));
     },
     onSuccess: (data: IContactResponse) => {
-      setIsSucsess(true);
       form.reset();
       console.log(data.message);
     },
     onError: (error) => {
-      setIsSucsess(false);
       console.log(error);
     },
     onSettled: () => {
@@ -97,7 +94,7 @@ const Contact = () => {
         size="md">
         {/* Modal content */}
         <Stack justify='center' align='center'>
-          {isSuccess ? (
+          {mutation.isSuccess ? (
             <>
               <Text size="xl" mah={20}>Thank you for your message!</Text>
               <Text size="xl">(*^_^*)</Text>
@@ -120,12 +117,16 @@ const Contact = () => {
             <GridCol span={6}>
               <Stack gap={30} className='scrollMoveYFadeIn'>
                 <TextInput
+                  id='username'
+                  autoComplete='username'
                   size="md"
                   styles={{ input: { backgroundColor: 'transparent' } }}
                   placeholder='Your Name'
                   key={form.key('name')}
                   {...form.getInputProps('name')} />
                 <TextInput
+                  id='email'
+                  autoComplete='email'
                   size="md"
                   styles={{ input: { backgroundColor: 'transparent' } }}
                   placeholder='Your Email'
