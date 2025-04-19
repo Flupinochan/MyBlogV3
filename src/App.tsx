@@ -19,7 +19,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { useScrollTriggerEffects } from "./useScrollTriggerEffects";
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+// import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 // Tanstack Queryキャッシュ設定
 const queryClient = new QueryClient()
@@ -56,7 +56,7 @@ function App() {
         <Footer />
         <FooterBar />
       </div>
-      <ReactQueryDevtools initialIsOpen={false} />
+      {/* <ReactQueryDevtools initialIsOpen={false} /> */}
     </QueryClientProvider>
   );
 }
