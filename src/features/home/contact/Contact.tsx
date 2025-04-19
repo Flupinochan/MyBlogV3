@@ -1,21 +1,21 @@
 import { Box, Grid, GridCol, Image, Modal, Space, Stack, Text, Textarea, TextInput } from '@mantine/core'
-import skillStyles from "./Skills.module.css";
-import H2 from '../../components/H2';
-import Button from '../../components/Button';
-import contactImage from "../../assets/contact_img.png";
 import { useForm } from "@mantine/form";
 import { zodResolver } from 'mantine-form-zod-resolver';
 import { z } from 'zod';
-import { IContactRequest, IContactResponse } from '../../shared/interfaces/ContactInterface';
+import { IContactRequest, IContactResponse } from '../../../shared/interfaces/ContactInterface';
 import { useDisclosure } from '@mantine/hooks';
-import modalGif from "../../assets/modal.gif";
 import { useState } from 'react';
-import axiosInstance from '../../utils/axiosInstance';
 import { notifications } from '@mantine/notifications';
 import { useRef } from "react";
 import gsap from 'gsap';
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import modalGif from "../../../assets/modal.gif";
+import axiosInstance from '../../../utils/axiosInstance';
+import skillStyles from "../skills/Skills.module.css";
+import H2 from '../../../components/H2';
+import Button from '../../../components/Button';
+import contactImage from "../../../assets/contact_img.png";
 
 // バリデーション
 const validationSchema = z.object({

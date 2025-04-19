@@ -1,7 +1,7 @@
-import skillsStyles from "./Skills.module.css";
+import skillsStyles from "../skills/Skills.module.css";
 import aboutMeStyles from "./AboutMe.module.css";
-import AboutMeSection from "./components/AboutMeSection";
-import H2 from "../../components/H2";
+import AboutMeSection from "./AboutMeSection";
+import H2 from "../../../components/H2";
 import { Space } from "@mantine/core";
 import { useRef } from "react";
 import gsap from 'gsap';

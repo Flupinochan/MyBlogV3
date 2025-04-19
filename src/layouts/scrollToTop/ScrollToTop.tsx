@@ -26,7 +26,7 @@ const ScrollToTop = () => {
       // スクロール位置が変わるたびに表示
       onUpdate: (self) => {
         self.scroll
-        gsap.to(btnRef.current, { autoAlpha: 1, duration: 0.3 });
+        gsap.to(btnRef.current, { autoAlpha: 1, duration: 0.5 });
 
         // 既存のタイマーがあればクリア
         if (scrollTimeout) {

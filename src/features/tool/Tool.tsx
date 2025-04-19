@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom"
 import { Anchor, List, ListItem, Stack } from "@mantine/core"
 import H2 from "../../components/H2";
-import skillStyles from "../home/Skills.module.css";
-import toolStyles from "./Tool.module.css";
 import H4 from "../../components/H4";
+import skillStyles from "../home/skills/Skills.module.css";
+import toolStyles from "./Tool.module.css";
 import { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
