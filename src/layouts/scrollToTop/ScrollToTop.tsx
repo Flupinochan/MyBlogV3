@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { gsap } from 'gsap';
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import scrollToTopStyles from "./ScrollToTop.module.css";
 
 const ScrollToTop = () => {
   const location = useLocation();
@@ -34,7 +35,10 @@ const ScrollToTop = () => {
 
         // タイマーをセットし、3秒後に非表示
         scrollTimeout = setTimeout(() => {
-          gsap.to(btnRef.current, { autoAlpha: 0, duration: 0.5 });
+          // hoverしている場合は非表示にしない
+          if (!(btnRef.current?.matches(":hover"))) {
+            gsap.to(btnRef.current, { autoAlpha: 0, duration: 0.5 });
+          }
         }, 2000);
 
         return () => { }
@@ -53,16 +57,10 @@ const ScrollToTop = () => {
     <button
       ref={btnRef}
       onClick={scrollToTop}
-      style={{
-        position: 'fixed',
-        right: '20px',
-        bottom: '20px',
-        zIndex: 1000,
-        cursor: 'pointer',
-      }}
+      className={scrollToTopStyles.btn}
     >
       Top
-    </button>
+    </button >
   );
 };
 

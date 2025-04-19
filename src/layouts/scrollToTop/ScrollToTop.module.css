@@ -1,7 +1,35 @@
-.buttonStyle {
-  position: fixed;
-  z-index: 100;
+.btn {
+  padding: 0.5rem 1rem;
+  width: fit-content;
+  text-align: center;
+  background: transparent;
   cursor: pointer;
-  bottom: 5rem;
-  right: 5rem;
+  transition: all 0.3s ease;
+  position: fixed;
+  color: var(--bg-color);
+  border: 0.1rem solid var(--bg-color);
+  z-index: 100;
+  right: var(--html-margin);
+  bottom: 20%;
+}
+
+.btn:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  background: var(--bg-color);
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  color: var(--text-color);
+}
+
+.btn:hover:after {
+  left: 0;
+  width: 100%;
 }
