@@ -6,17 +6,19 @@ import { Space } from "@mantine/core";
 import { useRef } from "react";
 import gsap from 'gsap';
 import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const AboutMe = () => {
 
   const ref = useRef<HTMLDivElement>(null);
   useGSAP((_context, _contextSafe) => {
-    gsap.effects.scrollFadeIn2(ref.current, {});
-    gsap.effects.scrollFadeIn(".scrollFadeIn", { scope: ref.current });
+    gsap.effects.scrollFadeIn(ref.current, { scope: ref.current });
+    gsap.effects.scrollMoveYFadeIn(".scrollMoveYFadeIn", { scope: ref.current });
+    ScrollTrigger.refresh();
   }, { scope: ref });
 
   return (
-    <section className={`${skillsStyles.section} ${aboutMeStyles.backgroundImage} scrollFadeIn2`} ref={ref}>
+    <section className={`${skillsStyles.section} ${aboutMeStyles.backgroundImage} scrollFadeIn`} ref={ref}>
       <H2 text="About Me" />
       <AboutMeSection
         title="Carrer"

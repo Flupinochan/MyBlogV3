@@ -1,21 +1,23 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-export interface ScrollFadeIn3Config {
+export interface ScrollMoveXFadeInConfig {
   duration: number;
-  top: string;
+  start: string;
+  ease: string;
   stagger: number;
 }
 
 gsap.registerEffect({
-  name: "scrollFadeIn3",
+  name: "scrollMoveXFadeIn",
   extendTimeline: false,
   defaults: {
     duration: 0.5,
-    top: "top 95%",
+    start: "top 90%",
+    ease: "power4.out",
     stagger: 0.2
-  },
-  effect: (elements: gsap.TweenTarget, config: ScrollFadeIn3Config) => {
+  } as ScrollMoveXFadeInConfig,
+  effect: (elements: gsap.TweenTarget, config: ScrollMoveXFadeInConfig) => {
     const targets: HTMLDivElement[] = gsap.utils.toArray(elements);
 
     // 初期状態の設定
@@ -27,14 +29,15 @@ gsap.registerEffect({
       // 下スクロール時：フェードイン
       ScrollTrigger.create({
         trigger: targets[0],
-        start: config.top,
-        end: "bottom 50%",
+        start: config.start,
         scrub: false,
         markers: false,
+        invalidateOnRefresh: true,
         onEnter: () => {
           gsap.to(targets, {
             x: 0,
             opacity: 1,
+            ease: config.ease,
             duration: config.duration,
             stagger: config.stagger, // 順番にアニメーション実行
           });
@@ -48,16 +51,18 @@ gsap.registerEffect({
       // 下スクロール時：フェードイン
       ScrollTrigger.create({
         trigger: targets[0],
-        start: config.top,
-        end: "bottom 50%",
+        start: config.start,
         scrub: false,
         markers: false,
+        invalidateOnRefresh: true,
         onEnter: () => {
           gsap.to(targets, {
             x: 0,
             opacity: 1,
+            ease: config.ease,
             duration: config.duration,
             stagger: config.stagger,
+            overwrite: "auto"
           });
         },
       });

@@ -12,7 +12,7 @@ interface ContentSectiontionProps {
 
 const ContentSection: React.FC<ContentSectiontionProps> = (props) => {
   return (
-    <section className="scrollFadeIn">
+    <section className="scrollMoveYFadeIn">
       <Space h="sm" />
       <H4 text={props.title} />
       <Space h="xl" />

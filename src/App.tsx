@@ -1,55 +1,92 @@
-import { useRef } from "react";
-import { Outlet } from "react-router-dom";
+import { useEffect, useRef } from "react";
+import { Outlet, useLocation } from "react-router-dom";
 import Header from "./layouts/header/Header";
 import Footer from "./layouts/footer/Footer";
 import Menu from "./layouts/menu/Menu";
 import FooterBar from "./layouts/footerBar/footerBar";
 import styles from "./App.module.css";
-// gsapインポート
+import "./animations/fadeIn";
 import "./animations/scrollFadeIn";
-import "./animations/scrollFadeIn2";
-import "./animations/scrollFadeIn3";
+import "./animations/scrollMoveYFadeIn";
+import "./animations/scrollMoveXFadeIn";
 import "./animations/textAnimation";
 import { gsap } from 'gsap';
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { TextPlugin } from 'gsap/TextPlugin';
+import imagesLoaded from 'imagesloaded';
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(TextPlugin);
 
+ScrollTrigger.config({
+  autoRefreshEvents: "resize,visibilitychange,DOMContentLoaded,load"
+});
+
 function App() {
-  const ref = useRef<HTMLDivElement>(null);
+  // App 全体を包むコンテナの ref
+  const appRef = useRef<HTMLDivElement>(null);
 
+  // 全画像読み込み完了後に ScrollTrigger.refresh() を実行
+  useEffect(() => {
+    if (appRef.current) {
+      const imgLoad = imagesLoaded(appRef.current);
+      const doneCallback = () => {
+        ScrollTrigger.refresh();
+      };
+      imgLoad.on('done', doneCallback);
+      return () => {
+        imgLoad.off('done', doneCallback);
+      };
+    }
+  }, []);
+
+
+  // window load と fonts.ready によるリフレッシュ
+  useEffect(() => {
+    const refresh = () => ScrollTrigger.refresh();
+    window.addEventListener("load", refresh);
+    document.fonts?.ready.then(refresh);
+    return () => window.removeEventListener("load", refresh);
+  }, []);
+
+  const location = useLocation();
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 100);
+    return () => clearTimeout(timeout);
+  }, [location.pathname]);
+
+  // header のアニメーション
+  const headerRef = useRef<HTMLDivElement>(null);
   useGSAP(() => {
-    const showAnim = gsap.from(ref.current, {
-      yPercent: -100, // 上に100%隠す
-      paused: true,   // 最初はアニメーションを自動再生しない
+    const showAnim = gsap.from(headerRef.current, {
+      yPercent: -100,
+      paused: true,
       duration: 0.2
-    }).progress(1);   // アニメーションを完了状態（上に隠れた状態）にしておく
-
+    }).progress(1);
     ScrollTrigger.create({
       start: "top top",
       end: "max",
+      invalidateOnRefresh: true,
       onUpdate: (self) => {
         self.direction === -1 ? showAnim.play() : showAnim.reverse();
       }
     });
-
-
-  });
+  }, { scope: headerRef });
 
   return (
-    <>
-      <div className={styles.stickyHeader} ref={ref}>
+    <div ref={appRef}>
+      <div className={styles.stickyHeader} ref={headerRef}>
         <Header />
         <Menu />
       </div>
-      {/* Outletにルーティングされたページが表示 */}
+      {/* Outlet にルーティングされたページが表示 */}
       <Outlet />
       <Footer />
       <FooterBar />
-    </>
+    </div>
   );
 }
 

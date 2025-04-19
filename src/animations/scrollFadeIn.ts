@@ -3,26 +3,24 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 export interface ScrollFadeInConfig {
   duration: number;
-  durationBack: number;
-  top: string;
+  ease: string;
+  start: string;
 }
-
-let fadeOutTween: gsap.core.Tween | null = null;
 
 gsap.registerEffect({
   name: "scrollFadeIn",
   extendTimeline: false,
   defaults: {
-    duration: 0.5,
-    durationBack: 1,
-    top: "top 95%"
-  },
+    duration: 1,
+    start: "top 80%", // "要素のトリガー位置, スクロールバーの位置"
+    ease: "power1.inOut"
+  } as ScrollFadeInConfig,
   effect: (elements: gsap.TweenTarget, config: ScrollFadeInConfig) => {
     const targets: HTMLDivElement[] = gsap.utils.toArray(elements);
 
     targets.forEach((el) => {
-      // 初期状態の設定：スクロール前は y:200、opacity:0
-      gsap.set(el, { y: 200, opacity: 0 });
+      // 初期状態の設定
+      gsap.set(el, { opacity: 0 });
       const mm = gsap.matchMedia();
 
       // PC用（画面幅769px以上）
@@ -30,35 +28,17 @@ gsap.registerEffect({
         // 下スクロール時：フェードイン
         ScrollTrigger.create({
           trigger: el,
-          start: config.top,
-          end: "bottom 50%",
+          start: config.start,
           scrub: false,
-          markers: false,
+          // markers: {
+          //   startColor: "blue"
+          // },
+          invalidateOnRefresh: true,
           onEnter: () => {
-            // フェードアウトをキャンセル (高速に上スクロール=>下スクロールした際)
-            if (fadeOutTween && fadeOutTween.isActive()) {
-              fadeOutTween.kill();
-              fadeOutTween = null;
-            }
-            gsap.to(el, { y: 0, opacity: 1, duration: config.duration });
-          }
-        });
-        // 上スクロール時：フェードアウト
-        ScrollTrigger.create({
-          trigger: el,
-          start: config.top,
-          end: "bottom 50%",
-          scrub: false,
-          markers: false,
+            gsap.to(el, { opacity: 1, duration: config.duration, ease: config.ease });
+          },
           onLeaveBack: () => {
-            fadeOutTween = gsap.to(el, {
-              opacity: 0,
-              duration: config.durationBack,
-              // フェードアウト完了後は初期位置に移動
-              onComplete: () => {
-                gsap.set(el, { y: 200, opacity: 0 });
-              }
-            });
+            gsap.to(el, { opacity: 0, duration: config.duration });
           }
         });
         return () => { };
@@ -69,34 +49,24 @@ gsap.registerEffect({
         // 下スクロール時：フェードイン
         ScrollTrigger.create({
           trigger: el,
-          start: config.top,
-          end: "bottom 50%",
+          start: config.start,
           scrub: false,
-          markers: false,
+          // markers: {
+          //   startColor: "blue"
+          // },
+          invalidateOnRefresh: true,
+          // 下方向スクロールアニメーション
           onEnter: () => {
-            if (fadeOutTween && fadeOutTween.isActive()) {
-              fadeOutTween.kill();
-              fadeOutTween = null;
-            }
-            gsap.to(el, { y: 0, opacity: 1, duration: config.duration });
-          }
-        });
-        // 上スクロール時：フェードアウト
-        ScrollTrigger.create({
-          trigger: el,
-          start: config.top,
-          end: "bottom 50%",
-          scrub: false,
-          markers: false,
-          onLeaveBack: () => {
-            fadeOutTween = gsap.to(el, {
-              opacity: 0,
-              duration: config.durationBack,
-              // フェードアウト完了後は初期位置に移動
-              onComplete: () => {
-                gsap.set(el, { y: 200, opacity: 0 });
-              }
+            gsap.to(el, {
+              opacity: 1,
+              duration: config.duration,
+              ease: config.ease,
+              overwrite: "auto"
             });
+          },
+          // 上方向スクロールアニメーション
+          onLeaveBack: () => {
+            gsap.to(el, { opacity: 0, duration: config.duration });
           }
         });
         return () => { };

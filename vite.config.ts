@@ -9,5 +9,8 @@ export default defineConfig({
     modules: {
       localsConvention: "dashes"
     }
+  },
+  build: {
+    cssCodeSplit: false,
   }
 })

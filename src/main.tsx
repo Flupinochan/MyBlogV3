@@ -10,10 +10,10 @@ import '@mantine/core/styles.css';
 import '@mantine/notifications/styles.css';
 import "./index.module.css";
 import Home from "./features/home/Home.tsx";
-import Tool from "./features/Tool/Tool.tsx";
+import Tool from "./features/tool/Tool.tsx";
 import Error from "./layouts/error/Error.tsx";
 import { Notifications } from '@mantine/notifications';
-import SwaggerUi from "./features/Tool/components/swagger/SwaggerUi.tsx";
+import SwaggerUi from "./features/tool/components/swagger/SwaggerUi.tsx";
 import History from "./features/history/History.tsx";
 
 

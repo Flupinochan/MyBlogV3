@@ -7,22 +7,24 @@ import H4 from "../../components/H4";
 import { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Tool = () => {
 
   const ref = useRef<HTMLDivElement>(null);
   useGSAP((_context, _contextSafe) => {
-    gsap.effects.scrollFadeIn2(ref.current, {});
-    gsap.effects.scrollFadeIn3(".scrollFadeIn3", { scope: ref.current });
+    gsap.effects.fadeIn(ref.current, {});
+    gsap.effects.scrollMoveXFadeIn(".scrollMoveXFadeIn", { scope: ref.current });
+    ScrollTrigger.refresh();
   }, { scope: ref });
 
   return (
-    <section className="scrollFadeIn2" ref={ref}>
+    <section className="fadeIn" ref={ref}>
       <div className={toolStyles.space} />
       <Stack className={skillStyles.section}>
         <H2 text="Tool" />
         <Stack gap={30}>
-          <Stack className="scrollFadeIn3">
+          <Stack className="scrollMoveXFadeIn">
             <H4 text="Google Extension" />
             <List className={toolStyles.listMarker} withPadding>
               <ListItem>
@@ -37,7 +39,7 @@ const Tool = () => {
               </ListItem>
             </List>
           </Stack>
-          <Stack className="scrollFadeIn3">
+          <Stack className="scrollMoveXFadeIn">
             <H4 text="API" />
             <List className={toolStyles.listMarker} withPadding>
               <ListItem>
