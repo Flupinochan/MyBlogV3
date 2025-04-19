@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { Anchor, Stack, Table } from "@mantine/core";
 import H4 from "../../../../components/H4";
 import toolStyles from "../../Tool.module.css";
-import { BranchInfoMap } from "../../../../interfaces/BlogVersionInterface";
+import { IBlogVersion } from "../../../../interfaces/BlogVersionInterface";
 import { createColumnHelper, flexRender, getCoreRowModel, getSortedRowModel, SortingState, useReactTable } from "@tanstack/react-table";
 
 interface Props {
-  data: BranchInfoMap[] | undefined;
+  data: IBlogVersion[] | undefined;
 }
 
 const BlogVersion: React.FC<Props> = ({ data }) => {
@@ -15,7 +15,7 @@ const BlogVersion: React.FC<Props> = ({ data }) => {
     { id: 'branchName', desc: true },
   ]);
 
-  const columnHelper = createColumnHelper<BranchInfoMap>();
+  const columnHelper = createColumnHelper<IBlogVersion>();
   const columns = [
     columnHelper.accessor('branchName', {
       // header名定義

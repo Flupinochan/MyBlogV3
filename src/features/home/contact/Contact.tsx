@@ -11,11 +11,12 @@ import gsap from 'gsap';
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import modalGif from "../../../assets/modal.gif";
-import axiosInstance from '../../../utils/axiosInstance';
 import skillStyles from "../skills/Skills.module.css";
 import H2 from '../../../components/H2';
 import Button from '../../../components/Button';
 import contactImage from "../../../assets/contact_img.png";
+import { useMutation } from '@tanstack/react-query';
+import { postContact } from '../../../api/postContact';
 
 // バリデーション
 const validationSchema = z.object({
@@ -25,7 +26,6 @@ const validationSchema = z.object({
 });
 
 const Contact = () => {
-
   const ref = useRef<HTMLDivElement>(null);
   useGSAP((_context, _contextSafe) => {
     gsap.effects.scrollFadeIn(ref.current, { scope: ref.current });
@@ -48,11 +48,10 @@ const Contact = () => {
     validate: zodResolver(validationSchema),
   });
 
-  // Button Click処理
-  const handleSubmit = async (values: IContactRequest) => {
-    form.validate();
-
-    try {
+  // リクエスト処理
+  const mutation = useMutation({
+    mutationFn: postContact,
+    onMutate: () => {
       notifications.show({
         title: "Sending",
         message: "メッセージを送信中...",
@@ -61,23 +60,29 @@ const Contact = () => {
         autoClose: false,
         withCloseButton: false,
       })
-
-      await new Promise(resolve => setTimeout(resolve, 1000));
-
-      const response = await axiosInstance.post("/contact", values);
-      const data: IContactResponse = response.data;
-      console.log(data);
-
-      notifications.clean();
+    },
+    onSuccess: (data: IContactResponse) => {
       setIsSucsess(true);
       form.reset();
-      open();
-
-    } catch (error) {
-      notifications.clean();
+      console.log(data.message);
+    },
+    onError: (error) => {
       setIsSucsess(false);
+      console.log(error);
+    },
+    onSettled: () => {
+      notifications.clean();
       open();
     }
+  });
+
+  // Button Click処理
+  const handleSubmit = async (values: IContactRequest) => {
+    form.validate();
+    if (Object.keys(form.errors).length > 0) {
+      return;
+    }
+    mutation.mutate(values);
   };
 
   return (

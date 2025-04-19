@@ -12,12 +12,13 @@ import Api from "./components/api/Api";
 import BlogVersion from "./components/blog-version/BlogVersion";
 import { useQuery } from "@tanstack/react-query";
 import { getBlogVersion } from "../../api/getBlogVersion";
-import { BranchInfoMap } from "../../interfaces/BlogVersionInterface";
+import { IBlogVersion } from "../../interfaces/BlogVersionInterface";
 
 const Tool = () => {
-  const { data, isSuccess } = useQuery<BranchInfoMap[]>({
+  const { data, isSuccess } = useQuery<IBlogVersion[]>({
     queryKey: ["blogVersion"],
     queryFn: getBlogVersion,
+    retry: 3,
   });
 
   const ref = useRef<HTMLDivElement>(null);
