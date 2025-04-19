@@ -35,26 +35,26 @@ const profileItems = [
   {
     value: '趣味',
     description: [
-      'ゲーム (World of Tanks)',
-      'アニメ (葬送のフリーレン)',
-      'モデリング (Blender、Live2D、The Sandbox、MagicaVoxel)',
-      '動画作成 (ゆっくりMovieMaker、Adobe Premiere Pro、MMD、GIMP)',
+      '・ゲーム (World of Tanks)',
+      '・アニメ (葬送のフリーレン)',
+      '・モデリング (Blender、Live2D、The Sandbox、MagicaVoxel)',
+      '・動画作成 (ゆっくりMovieMaker、Adobe Premiere Pro、MMD、GIMP)',
     ].join('<br/>'),
   },
   {
     value: '資格',
     description: [
-      '情報処理技能検定試験 表計算1級',
-      '文書デザイン検定試験 2級',
-      '秘書技能検定試験 3級',
-      'ビジネス文書技能検定試験 3級',
-      'LPIC-3 (300 Enterprise Professional Mixed Environment)',
-      'LPIC-3 (304 Enterprise Professional Virtualization & High Availability)',
-      'CCNA (Cisco Certified Network Associate)',
-      'AWS SAA (AWS Certified Solutions Architect - Associate)',
-      'Python3 エンジニア認定基礎試験',
-      'Java Silver (Oracle Certified Java Programmer, Silver SE 17)',
-      'OSS-DB Silver (PostgreSQL)'
+      '・情報処理技能検定試験 表計算1級',
+      '・文書デザイン検定試験 2級',
+      '・秘書技能検定試験 3級',
+      '・ビジネス文書技能検定試験 3級',
+      '・LPIC-3 (300 Enterprise Professional Mixed Environment)',
+      '・LPIC-3 (304 Enterprise Professional Virtualization & High Availability)',
+      '・CCNA (Cisco Certified Network Associate)',
+      '・AWS SAA (AWS Certified Solutions Architect - Associate)',
+      '・Python3 エンジニア認定基礎試験',
+      '・Java Silver (Oracle Certified Java Programmer, Silver SE 17)',
+      '・OSS-DB Silver (PostgreSQL)'
     ].join('<br/>'),
   },
   {
@@ -66,17 +66,17 @@ const profileItems = [
   {
     value: 'ツール',
     description: [
-      'IntelliJ IDEA',
-      'Visual Studio',
-      'Visual Studio Code',
-      'DBeaver',
-      'Git BASH',
-      'Vim',
-      'Unity',
-      'Postman',
-      'Figma',
-      'draw.io',
-      'RLogin'
+      '・IntelliJ IDEA',
+      '・Visual Studio',
+      '・Visual Studio Code',
+      '・DBeaver',
+      '・Git BASH',
+      '・Vim',
+      '・Unity',
+      '・Postman',
+      '・Figma',
+      '・draw.io',
+      '・RLogin'
     ].join('<br/>'),
   },
 ];
