@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Anchor, Stack, Table } from "@mantine/core";
-import H4 from "../../../../components/H4";
-import toolStyles from "../../Tool.module.css";
-import { IBlogVersion } from "../../../../interfaces/BlogVersionInterface";
+import H4 from "../../../components/H4";
+import toolStyles from "../Tool.module.css";
+import { IBlogVersion } from "../../../interfaces/BlogVersionInterface";
 import { createColumnHelper, flexRender, getCoreRowModel, getSortedRowModel, SortingState, useReactTable } from "@tanstack/react-table";
 
 interface Props {

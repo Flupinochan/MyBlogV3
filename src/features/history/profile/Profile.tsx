@@ -3,9 +3,7 @@ import { useRef, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import H2 from "../../components/H2";
-import skillStyles from "../home/skills/Skills.module.css";
-import toolStyles from "../tool/Tool.module.css";
+import H4 from "../../../components/H4";
 
 const profileItems = [
   {
@@ -54,13 +52,28 @@ const profileItems = [
       '・AWS SAA (AWS Certified Solutions Architect - Associate)',
       '・Python3 エンジニア認定基礎試験',
       '・Java Silver (Oracle Certified Java Programmer, Silver SE 17)',
-      '・OSS-DB Silver (PostgreSQL)'
+      '・OSS-DB Silver (PostgreSQL)',
+      '・Neo4j Certified Professional'
     ].join('<br/>'),
   },
   {
     value: 'スキル',
     description: [
-      '記載予定',
+      '・React',
+      '・TanStack',
+      '・Mantine',
+      '・WinUI 3',
+      '・WPF',
+      '・MVVM',
+      '・Spring Boot',
+      '・OpenPyXL',
+      '・Pandas',
+      '・SQLite',
+      '・Neo4j',
+      '・Supabase',
+      '・ECS',
+      '・Amplify',
+      '・Control Tower',
     ].join('<br/>'),
   },
   {
@@ -104,27 +117,24 @@ const Profile = () => {
 
 
   return (
-    <section className="fadeIn" ref={sectionRef}>
-      <div className={toolStyles.space} />
-      <Stack className={skillStyles.section}>
-        <H2 text="Profile" />
-        <Accordion variant="default" chevronPosition="left" onChange={handleChange}>
-          {profileItems.map((item, index) => (
-            <Accordion.Item key={item.value} value={item.value} className="scrollMoveXFadeIn">
-              <Accordion.Control>
-                {item.value}
-              </Accordion.Control>
-              <Accordion.Panel>
-                <p
-                  ref={(el) => (textRefs.current[index] = el)}
-                  dangerouslySetInnerHTML={{ __html: item.description }}
-                />
-              </Accordion.Panel>
-            </Accordion.Item>
-          ))}
-        </Accordion>
-      </Stack>
-    </section>
+    <Stack className="scrollMoveXFadeIn">
+      <H4 text="Profile" />
+      <Accordion variant="default" chevronPosition="left" onChange={handleChange}>
+        {profileItems.map((item, index) => (
+          <Accordion.Item key={item.value} value={item.value} className="scrollMoveXFadeIn">
+            <Accordion.Control>
+              {item.value}
+            </Accordion.Control>
+            <Accordion.Panel>
+              <p
+                ref={(el) => (textRefs.current[index] = el)}
+                dangerouslySetInnerHTML={{ __html: item.description }}
+              />
+            </Accordion.Panel>
+          </Accordion.Item>
+        ))}
+      </Accordion>
+    </Stack>
   )
 }
 

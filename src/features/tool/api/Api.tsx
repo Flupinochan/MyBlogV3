@@ -1,7 +1,7 @@
 import { Anchor, List, ListItem, Stack } from "@mantine/core"
-import H4 from "../../../../components/H4"
+import H4 from "../../../components/H4"
 import { NavLink } from "react-router-dom"
-import toolStyles from "../../Tool.module.css"
+import toolStyles from "../Tool.module.css"
 
 const Api = () => {
   return (

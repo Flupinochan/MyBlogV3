@@ -1,6 +1,6 @@
 import { Anchor, List, ListItem, Stack } from "@mantine/core";
-import H4 from "../../../../components/H4";
-import toolStyles from "../../Tool.module.css";
+import H4 from "../../../components/H4";
+import toolStyles from "../Tool.module.css";
 
 const GoogleExtension = () => {
   return (
