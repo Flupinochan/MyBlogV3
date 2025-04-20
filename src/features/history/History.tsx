@@ -7,6 +7,7 @@ import H2 from "../../components/H2";
 import skillStyles from "../home/skills/Skills.module.css";
 import toolStyles from "../tool/Tool.module.css";
 import Profile from "./profile/Profile";
+import Timeline from "./Timeline/Timeline";
 
 const History = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -22,8 +23,9 @@ const History = () => {
       <Stack className={skillStyles.section}>
         <H2 text="History" />
         <Space h={10} />
-        <Stack gap={30}>
+        <Stack gap={70}>
           <Profile />
+          <Timeline />
         </Stack>
       </Stack>
     </section>

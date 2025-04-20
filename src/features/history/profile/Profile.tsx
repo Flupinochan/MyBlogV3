@@ -1,8 +1,6 @@
 import { Accordion, Stack } from "@mantine/core"
 import { useRef, useState } from 'react';
 import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import H4 from "../../../components/H4";
 
 const profileItems = [
@@ -95,15 +93,9 @@ const profileItems = [
 ];
 
 const Profile = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
   const textRefs = useRef<(HTMLParagraphElement | null)[]>([]);
-  useGSAP((_context, _contextSafe) => {
-    gsap.effects.fadeIn(sectionRef.current, { scope: sectionRef.current });
-    gsap.effects.scrollMoveXFadeIn(".scrollMoveXFadeIn", { scope: sectionRef.current });
-    ScrollTrigger.refresh();
-  }, { scope: sectionRef });
-
   const [opened, setOpened] = useState<string | null>(null);
+
   const handleChange = (value: string | null) => {
     const index = profileItems.findIndex((item) => item.value === value);
     if (index !== -1 && value !== opened) {
@@ -121,15 +113,13 @@ const Profile = () => {
       <H4 text="Profile" />
       <Accordion variant="default" chevronPosition="left" onChange={handleChange}>
         {profileItems.map((item, index) => (
-          <Accordion.Item key={item.value} value={item.value} className="scrollMoveXFadeIn">
+          <Accordion.Item key={item.value} value={item.value}>
             <Accordion.Control>
               {item.value}
             </Accordion.Control>
             <Accordion.Panel>
-              <p
-                ref={(el) => (textRefs.current[index] = el)}
-                dangerouslySetInnerHTML={{ __html: item.description }}
-              />
+              <p ref={(el) => (textRefs.current[index] = el)}
+                dangerouslySetInnerHTML={{ __html: item.description }} />
             </Accordion.Panel>
           </Accordion.Item>
         ))}
