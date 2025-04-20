@@ -21,7 +21,7 @@ const Timeline = () => {
       markers: true,
       trigger: coverRef.current,
       start: "top 70%",
-      end: "90% 85%",
+      end: "100% 90%",
       scrub: true,
       invalidateOnRefresh: true,
       onUpdate: (self) => {

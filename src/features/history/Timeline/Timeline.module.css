@@ -1,6 +1,6 @@
 .parentBox {
   position: relative;
-  width: 3px;
+  width: 2px;
   height: 2000px;
   background-color: transparent;
   overflow: hidden;
@@ -16,13 +16,13 @@
 .red {
   height: 500px;
   width: 100%;
-  background-color: var(--blue-font-color)
+  background: linear-gradient(to bottom, #ff7e5f, #feb47b, #86a8e7);
 }
 
 .blue {
   height: 500px;
   width: 100%;
-  background-color: var(--yellow-font-color);
+  background: linear-gradient(to bottom, #86a8e7, #feb47b, #ff7e5f);
 }
 
 .green {

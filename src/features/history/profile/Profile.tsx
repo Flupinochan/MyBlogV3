@@ -2,6 +2,7 @@ import { Accordion, Stack } from "@mantine/core"
 import { useRef, useState } from 'react';
 import gsap from 'gsap';
 import H4 from "../../../components/H4";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const profileItems = [
   {
@@ -105,6 +106,10 @@ const Profile = () => {
       }
     }
     setOpened(value);
+
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 750);
   };
 
 
