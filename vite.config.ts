@@ -40,7 +40,7 @@ export default defineConfig({
         background_color: '#0d1117',
         categories: ['lifestyle', 'personalization'],
         description: 'MetalMental Blog',
-        display: 'browser',
+        display: 'standalone',
         // file_handlers // .txt は メモ帳 で開くなど拡張子に基づいてアプリを起動させる設定
         icons: [
           {

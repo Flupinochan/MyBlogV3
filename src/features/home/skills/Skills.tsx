@@ -24,7 +24,7 @@ const Skills = () => {
       <H2 text="Skills" />
       <SkillSection
         title="Frontend"
-        badgesText={["React", "WinUI 3", "GSAP"]}
+        badgesText={["React", "WinUI 3", "PWA"]}
         description="多様なデバイスにシームレスに適応するレスポンシブデザインとシステム障害に強いレジリエンス戦略を活用したアプリケーションを作成します"
         svg={<TypeScriptSvg />}
         textColor="#006FEE"

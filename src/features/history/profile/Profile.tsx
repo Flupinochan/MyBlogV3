@@ -60,7 +60,10 @@ const profileItems = [
     description: [
       '・React',
       '・TanStack',
+      '・Progressive Web Apps',
       '・Mantine',
+      '・Tailwind CSS',
+      '・GSAP',
       '・WinUI 3',
       '・WPF',
       '・MVVM',
