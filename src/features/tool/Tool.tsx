@@ -34,16 +34,16 @@ const Tool = () => {
       <Stack className={skillStyles.section}>
         <H2 text="Tool" />
         <Space h={10} />
-        {isSuccess ? (
-          <Stack gap={30}>
-            <GoogleExtension />
-            <WindowsApp />
-            <Api />
+        <Stack gap={30}>
+          <GoogleExtension />
+          <WindowsApp />
+          <Api />
+          {isSuccess ? (
             <BlogVersion data={data} />
-          </Stack>
-        ) : (
-          <></>
-        )}
+          ) : (
+            <></>
+          )}
+        </Stack>
       </Stack>
     </section>
   )
