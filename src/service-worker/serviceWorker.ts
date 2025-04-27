@@ -1,36 +1,59 @@
+/**
+ * ■Application Cache
+ * Cache API(cache) と CacheStorage API(caches)がある
+ * Cache APIでキャッシュを追加
+ * CacheStorage APIでキャッシュを削除
+ * 
+ * open キャッシュストレージを作成
+ * add (fetch + put) fetch(request)して取得した結果をputでキャッシュする
+ * put キー, 値でキャッシュする
+ * match キャッシュを取得する
+ * keys キャッシュされているキーを一覧取得する
+ * 
+ * install と activate
+ * どちらも1度だけ実行されるが、以下のように使い分けることが多い
+ * install キャッシュする
+ * activate 古いキャッシュを削除する
+ */
+// 指定したファイルをキャッシュすることも可能だが、fetchでキャッシュすることも可能
+// ※全てのファイルは、GETリクエストでサーバから取得しているため
+
+// import { getCacheSizeMB } from "./cacheUtils";
+
 const swSelf = globalThis as unknown as ServiceWorkerGlobalScope;
 // キャッシュ名
 const CACHE_DYNAMIC_NAME = 'dynamic-cache-v2';
 
-// 指定したファイルをキャッシュすることも可能だが、fetchでキャッシュすることも可能
-// 全てのファイルは、GETリクエストでサーバから取得しているため
 
 swSelf.addEventListener('install', (event) => {
-  event.waitUntil(
-    (async () => {
-      console.log('Service worker installed', event);
-    })()
-  );
+  // 指定したファイル、URLをキャッシュする ※/はルートパスへのリクエストをキャッシュする
+  const preCache = async () => {
+    const cache = await caches.open(CACHE_DYNAMIC_NAME);
+    return cache.addAll([
+      '/',
+      '/index.html',
+      '/robots.txt',
+      // 以下のようなCDNもキャッシュ可能だが、CORSで拒否されるため、追加の設定が必要
+      // 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap',
+    ]);
+  };
+  event.waitUntil(preCache());
+  // 1. 即座にactivateを実行
+  swSelf.skipWaiting();
 });
 
-swSelf.addEventListener('activate', async (event) => {
-  console.log('Service worker activated', event);
-  // デフォルトでは、インストール後は次回読み込み時からアクティブになるが、
-  // 以下claim()を返すことで、インストール後の既存のページでも即座にアクティベート可能
+
+swSelf.addEventListener('activate', async (_event) => {
+  // 2. 新規にactive化したservice workerに制御権を渡す
   await swSelf.clients.claim();
 
   // 古いキャッシュを削除
   const cacheNames = await caches.keys();
-  const oldCaches = cacheNames.filter(name => name !== CACHE_DYNAMIC_NAME);
-  await Promise.all(
-    oldCaches.map((name) => {
-      console.log(`Deleting old cache: ${name}`);
-      return caches.delete(name);
-    })
-  );
+  const oldCacheNames = cacheNames.filter((cacheName) => cacheName !== CACHE_DYNAMIC_NAME);
+  await Promise.all(oldCacheNames.map((cacheName) => caches.delete(cacheName)));
 });
 
-// GETリクエストキャッシュ設定
+
 // application cache strageにキャッシュする
 swSelf.addEventListener('fetch', (event) => {
   // 拡張機能からのリクエストはキャッシュしない
@@ -38,55 +61,32 @@ swSelf.addEventListener('fetch', (event) => {
     return;
   }
 
-  if (event.request.method === 'GET') {
-    event.respondWith(
-      (async () => {
-        const cachedResponse = await caches.match(event.request);
-        // キャッシュがある場合は、キャッシュを返す
-        if (cachedResponse) {
-          return cachedResponse;
-        }
-
-        // キャッシュがない場合は、リクエストして取得し、キャッシュして返す
-        const response = await fetch(event.request);
-        // レスポンスが200であればキャッシュに保存
-        if (response && response.status === 200) {
-          const clonedResponse = response.clone();
-          const cache = await caches.open(CACHE_DYNAMIC_NAME);
-          // event.request 名をキャッシュキー名でキャッシュする
-          cache.put(event.request, clonedResponse);
-        }
-        return response;
-      })()
-    );
-  } else {
-    // GET 以外のリクエストにはキャッシュしない
-    event.respondWith(fetch(event.request));
+  // GET 以外のリクエストはキャッシュしない
+  if (event.request.method !== 'GET') {
+    return event.respondWith(fetch(event.request));
   }
+
+  const getCache = async () => {
+    // キャッシュがある場合は、キャッシュを返す
+    const cachedResponse = await caches.match(event.request);
+    if (cachedResponse) {
+      return cachedResponse;
+    }
+
+    // キャッシュがない場合は、リクエストして取得し、キャッシュして返す
+    const response = await fetch(event.request);
+    // レスポンスが200であればキャッシュに保存
+    if (response && response.status === 200) {
+      const clonedResponse = response.clone();
+      // CacheStorageにCache名で開く
+      const cache = await caches.open(CACHE_DYNAMIC_NAME);
+      // キー名: event.request, 値: response でキャッシュする
+      cache.put(event.request, clonedResponse);
+    }
+    return response;
+  };
+  return event.respondWith(getCache());
 
   // getCacheSizeMB(CACHE_DYNAMIC_NAME);
 });
 
-/**
- * キャッシュサイズを確認
- * @param cacheName - キャッシュ名
- */
-async function getCacheSizeMB(cacheName: string): Promise<void> {
-  const cache = await caches.open(cacheName);
-  const requests = await cache.keys();
-  let totalSize: number = 0;
-
-  // 各リソースのサイズを取得
-  const promises: Promise<void>[] = requests.map(async (request) => {
-    const response = await cache.match(request);
-    if (response) {
-      const blob = await response.blob();
-      totalSize += blob.size; // サイズを合計
-    }
-  });
-
-  // 全てのリソースのサイズを計算し、MB単位に変換してコンソールに表示
-  await Promise.all(promises);
-  const totalSizeMB: number = totalSize / (1024 * 1024); // バイトをMBに変換
-  console.log(`Cache Size for ${cacheName}: ${totalSizeMB.toFixed(2)} MB`);
-}
