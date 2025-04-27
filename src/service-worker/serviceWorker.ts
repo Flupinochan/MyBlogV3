@@ -1,5 +1,6 @@
 const swSelf = globalThis as unknown as ServiceWorkerGlobalScope;
-const CACHE_DYNAMIC_NAME = 'dynamic-cache-v1';
+// キャッシュ名 ※名前を変更すると再キャッシュされる
+const CACHE_DYNAMIC_NAME = 'dynamic-cache-v2';
 
 // 指定したファイルをキャッシュすることも可能だが、fetchでキャッシュすることも可能
 // 全てのファイルは、GETリクエストでサーバから取得しているため
