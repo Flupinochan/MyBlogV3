@@ -1,5 +1,5 @@
 const swSelf = globalThis as unknown as ServiceWorkerGlobalScope;
-// キャッシュ名 ※名前を変更すると再キャッシュされる
+// キャッシュ名
 const CACHE_DYNAMIC_NAME = 'dynamic-cache-v2';
 
 // 指定したファイルをキャッシュすることも可能だが、fetchでキャッシュすることも可能
@@ -18,6 +18,16 @@ swSelf.addEventListener('activate', async (event) => {
   // デフォルトでは、インストール後は次回読み込み時からアクティブになるが、
   // 以下claim()を返すことで、インストール後の既存のページでも即座にアクティベート可能
   await swSelf.clients.claim();
+
+  // 古いキャッシュを削除
+  const cacheNames = await caches.keys();
+  const oldCaches = cacheNames.filter(name => name !== CACHE_DYNAMIC_NAME);
+  await Promise.all(
+    oldCaches.map((name) => {
+      console.log(`Deleting old cache: ${name}`);
+      return caches.delete(name);
+    })
+  );
 });
 
 // GETリクエストキャッシュ設定
