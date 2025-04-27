@@ -4,6 +4,8 @@ import H4 from "../../../components/H4";
 import toolStyles from "../Tool.module.css";
 import { IBlogVersion } from "../../../interfaces/BlogVersionInterface";
 import { createColumnHelper, flexRender, getCoreRowModel, getSortedRowModel, SortingState, useReactTable } from "@tanstack/react-table";
+import Button from '../../../components/Button';
+import { installApp } from '../../../service-worker/installBanner';
 
 interface Props {
   data: IBlogVersion[] | undefined;
@@ -55,6 +57,7 @@ const BlogVersion: React.FC<Props> = ({ data }) => {
   return (
     <Stack className="scrollMoveXFadeIn">
       <H4 text="Release" />
+      <Button text='Install' type='button' onClick={installApp} />
       <div className={toolStyles.listMarker}>
         <Table>
           <Table.Thead>

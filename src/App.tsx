@@ -20,6 +20,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { useScrollTriggerEffects } from "./useScrollTriggerEffects";
+import useServiceWorkerEffects from "./useServiceWorkerEffects";
 // import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 // Tanstack Queryキャッシュ設定
@@ -38,11 +39,15 @@ function App() {
   // スクロールトリガーリフレッシュ
   useScrollTriggerEffects(appRef);
 
+  // Service Worker登録
+  useServiceWorkerEffects();
+
   // header の表示/非表示アニメーション
   useGSAP(() => {
     gsap.effects.headerAnimation(headerRef.current, { scope: headerRef.current });
     ScrollTrigger.refresh();
   }, { scope: headerRef });
+
 
   return (
     <QueryClientProvider client={queryClient}>
