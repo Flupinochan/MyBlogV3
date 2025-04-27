@@ -1,5 +1,5 @@
 interface BeforeInstallPromptEvent extends Event {
-  prompt: () => void;
+  prompt: () => Promise<{ outcome: 'accepted' | 'dismissed', platform: string }>;
   userChoice: Promise<{ outcome: 'accepted' | 'dismissed', platform: string }>;
   platforms: string[];
 }
@@ -10,17 +10,19 @@ declare global {
   }
 }
 
-let deferredPrompt: BeforeInstallPromptEvent | null = null;
+let installPrompt: BeforeInstallPromptEvent | null = null;
 
 export const addPwaInstallBanner = () => {
-  window.addEventListener('beforeinstallprompt', (e: BeforeInstallPromptEvent) => {
-    deferredPrompt = e;
+  window.addEventListener('beforeinstallprompt', (event: BeforeInstallPromptEvent) => {
+    installPrompt = event;
   });
 }
 
 export async function installApp() {
-  if (deferredPrompt) {
-    deferredPrompt.prompt();
-    deferredPrompt = null;
+  if (!installPrompt) {
+    return;
   }
+  const result = await installPrompt.prompt();
+  console.log(`Install prompt was: ${result.outcome}`);
+  installPrompt = null;
 }

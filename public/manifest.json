@@ -9,13 +9,28 @@
   "display": "standalone",
   "icons": [
     {
+      "src": "/icon-16x16.ico",
+      "sizes": "16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/icon-32x32.ico",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    },
+    {
       "src": "/favicon.ico",
-      "sizes": "16x16 32x32 48x48",
+      "sizes": "48x48",
       "type": "image/x-icon"
     },
     {
       "src": "/favicon.png",
-      "sizes": "192x192 512x512",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/image-512x512.png",
+      "sizes": "512x512",
       "type": "image/png"
     },
     {
@@ -37,6 +52,22 @@
   "name": "MetalMental Blog",
   "orientation": "any",
   "short_name": "MetalMental",
+  "screenshots": [
+    {
+      "src": "/screenshots.webp",
+      "sizes": "1280x720",
+      "type": "image/webp",
+      "form_factor": "wide",
+      "label": "MetalMental Blog"
+    },
+    {
+      "src": "/screenshots.webp",
+      "sizes": "1280x720",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "MetalMental Blog"
+    }
+  ],
   "shortcuts": [
     {
       "name": "MetalMental Blog",
