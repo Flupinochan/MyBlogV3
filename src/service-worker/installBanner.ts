@@ -12,6 +12,7 @@ declare global {
 
 let installPrompt: BeforeInstallPromptEvent | null = null;
 
+// 5分以上滞在し、複数回訪れないと発火しない?
 export const addPwaInstallBanner = () => {
   window.addEventListener('beforeinstallprompt', (event: BeforeInstallPromptEvent) => {
     installPrompt = event;

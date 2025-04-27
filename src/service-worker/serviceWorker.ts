@@ -53,7 +53,7 @@ swSelf.addEventListener('fetch', (event) => {
     event.respondWith(fetch(event.request));
   }
 
-  getCacheSizeMB(CACHE_DYNAMIC_NAME);
+  // getCacheSizeMB(CACHE_DYNAMIC_NAME);
 });
 
 /**
