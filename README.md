@@ -1,5 +1,11 @@
 # MetalMental Blog
 
+## service worker test
+
+```bash
+npx serve -s dist
+```
+
 ## Amplify CLI
 https://docs.amplify.aws/react/reference/cli-commands/
 
