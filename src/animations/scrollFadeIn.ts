@@ -11,8 +11,8 @@ gsap.registerEffect({
   name: "scrollFadeIn",
   extendTimeline: false,
   defaults: {
-    duration: 1,
-    start: "top 80%", // "要素のトリガー位置, スクロールバーの位置"
+    duration: 0.75,
+    start: "top 90%", // "要素のトリガー位置, スクロールバーの位置"
     ease: "power1.inOut"
   } as ScrollFadeInConfig,
   effect: (elements: gsap.TweenTarget, config: ScrollFadeInConfig) => {

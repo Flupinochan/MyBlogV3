@@ -1,10 +1,10 @@
 import { Stack } from "@mantine/core";
-import Skills from "./Skills";
-import Title from "./Title";
-import Content from "./Content";
-import Contact from "./Contact";
 import styles from "./Home.module.css";
-import AboutMe from "./AboutMe";
+import Skills from "./skills/Skills";
+import Title from "./title/Title";
+import Content from "./content/Content";
+import Contact from "./contact/Contact";
+import AboutMe from "./aboutme/AboutMe";
 
 const Home = () => {
   return (

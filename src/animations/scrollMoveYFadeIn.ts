@@ -17,7 +17,7 @@ gsap.registerEffect({
     durationBack: 1,
     ease: "power4.out",
     start: "top 80%",
-    mobileStart: "top 95%"
+    mobileStart: "top 90%"
   } as ScrollMoveYFadeInConfig,
   effect: (elements: gsap.TweenTarget, config: ScrollMoveYFadeInConfig) => {
     const targets: HTMLDivElement[] = gsap.utils.toArray(elements);

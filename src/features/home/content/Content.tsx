@@ -1,10 +1,10 @@
 import { Grid, GridCol, Stack } from "@mantine/core";
-import H2 from "../../components/H2";
-import ContentSection from "./components/ContentSection";
-import blogImage from "../../assets/blog_img.jpg";
-import youtubeImage from "../../assets/youtube_img.jpg";
+import H2 from "../../../components/H2";
+import ContentSection from "./ContentSection";
+import blogImage from "../../../assets/blog_img.jpg";
+import youtubeImage from "../../../assets/youtube_img.jpg";
 import contentStyles from "./Content.module.css";
-import skillStyles from "./Skills.module.css";
+import skillStyles from "../skills/Skills.module.css";
 import { useRef } from "react";
 import gsap from 'gsap';
 import { useGSAP } from "@gsap/react";

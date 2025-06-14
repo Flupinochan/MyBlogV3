@@ -13,7 +13,7 @@ import Home from "./features/home/Home.tsx";
 import Tool from "./features/tool/Tool.tsx";
 import Error from "./layouts/error/Error.tsx";
 import { Notifications } from '@mantine/notifications';
-import SwaggerUi from "./features/tool/components/swagger/SwaggerUi.tsx";
+import SwaggerUi from "./features/tool/swagger/SwaggerUi.tsx";
 import History from "./features/history/History.tsx";
 
 
@@ -67,6 +67,7 @@ const router = createBrowserRouter([
     ]
   },
 ]);
+
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <MantineProvider theme={theme} defaultColorScheme="dark">

@@ -1,21 +1,21 @@
 import { Box, Grid, GridCol, Image, Modal, Space, Stack, Text, Textarea, TextInput } from '@mantine/core'
-import skillStyles from "./Skills.module.css";
-import H2 from '../../components/H2';
-import Button from '../../components/Button';
-import contactImage from "../../assets/contact_img.png";
 import { useForm } from "@mantine/form";
 import { zodResolver } from 'mantine-form-zod-resolver';
 import { z } from 'zod';
-import { IContactRequest, IContactResponse } from '../../shared/interfaces/ContactInterface';
+import { IContactRequest, IContactResponse } from '../../../interfaces/ContactInterface';
 import { useDisclosure } from '@mantine/hooks';
-import modalGif from "../../assets/modal.gif";
-import { useState } from 'react';
-import axiosInstance from '../../utils/axiosInstance';
 import { notifications } from '@mantine/notifications';
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import gsap from 'gsap';
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import modalGif from "../../../assets/modal.gif";
+import skillStyles from "../skills/Skills.module.css";
+import H2 from '../../../components/H2';
+import Button from '../../../components/Button';
+import contactImage from "../../../assets/contact_img.png";
+import { useMutation } from '@tanstack/react-query';
+import { postContact } from '../../../api/postContact';
 
 // バリデーション
 const validationSchema = z.object({
@@ -25,7 +25,6 @@ const validationSchema = z.object({
 });
 
 const Contact = () => {
-
   const ref = useRef<HTMLDivElement>(null);
   useGSAP((_context, _contextSafe) => {
     gsap.effects.scrollFadeIn(ref.current, { scope: ref.current });
@@ -35,7 +34,6 @@ const Contact = () => {
 
   // Modal
   const [opened, { open, close }] = useDisclosure(false);
-  const [isSuccess, setIsSucsess] = useState(false);
 
   // From
   const form = useForm({
@@ -48,11 +46,12 @@ const Contact = () => {
     validate: zodResolver(validationSchema),
   });
 
-  // Button Click処理
-  const handleSubmit = async (values: IContactRequest) => {
-    form.validate();
-
-    try {
+  // リクエスト処理
+  const [isOffline, setIsOffline] = useState<boolean>(false);
+  const mutation = useMutation({
+    retry: 3,
+    mutationFn: postContact,
+    onMutate: async () => {
       notifications.show({
         title: "Sending",
         message: "メッセージを送信中...",
@@ -61,23 +60,32 @@ const Contact = () => {
         autoClose: false,
         withCloseButton: false,
       })
-
       await new Promise(resolve => setTimeout(resolve, 1000));
-
-      const response = await axiosInstance.post("/contact", values);
-      const data: IContactResponse = response.data;
-      console.log(data);
-
-      notifications.clean();
-      setIsSucsess(true);
+    },
+    onSuccess: async (response: Response) => {
       form.reset();
-      open();
-
-    } catch (error) {
+      if (response.status === 202) {
+        setIsOffline(true);
+      }
+      const data: IContactResponse = await response.json();
+      console.log(data);
+    },
+    onError: (error) => {
+      console.log(error);
+    },
+    onSettled: () => {
       notifications.clean();
-      setIsSucsess(false);
       open();
     }
+  });
+
+  // Button Click処理
+  const handleSubmit = async (values: IContactRequest) => {
+    form.validate();
+    if (Object.keys(form.errors).length > 0) {
+      return;
+    }
+    mutation.mutate(values);
   };
 
   return (
@@ -90,11 +98,12 @@ const Contact = () => {
         size="md">
         {/* Modal content */}
         <Stack justify='center' align='center'>
-          {isSuccess ? (
+          {mutation.isSuccess ? (
             <>
               <Text size="xl" mah={20}>Thank you for your message!</Text>
               <Text size="xl">(*^_^*)</Text>
               <Image src={modalGif} alt="Thanks Image" />
+              {isOffline && <Text>Offline - will send when connected</Text>}
             </>
           ) : (
             <>
@@ -113,12 +122,16 @@ const Contact = () => {
             <GridCol span={6}>
               <Stack gap={30} className='scrollMoveYFadeIn'>
                 <TextInput
+                  id='username'
+                  autoComplete='username'
                   size="md"
                   styles={{ input: { backgroundColor: 'transparent' } }}
                   placeholder='Your Name'
                   key={form.key('name')}
                   {...form.getInputProps('name')} />
                 <TextInput
+                  id='email'
+                  autoComplete='email'
                   size="md"
                   styles={{ input: { backgroundColor: 'transparent' } }}
                   placeholder='Your Email'
@@ -133,7 +146,7 @@ const Contact = () => {
                   key={form.key('message')}
                   {...form.getInputProps('message')} />
                 <div style={{ textAlign: "right" }}>
-                  <Button text='Submit' type='submit' />
+                  <Button text='Submit' type='submit' pending={mutation.isPending} />
                 </div>
               </Stack>
             </GridCol>

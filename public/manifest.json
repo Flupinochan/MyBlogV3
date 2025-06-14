@@ -1,0 +1,88 @@
+{
+  "background_color": "#0d1117",
+  "categories": [
+    "lifestyle",
+    "personalization"
+  ],
+  "description": "MetalMental Blog",
+  "dir": "ltr",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "/icon-16x16.ico",
+      "sizes": "16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/icon-32x32.ico",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/image-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "lang": "ja-JP",
+  "launch_handler": {
+    "client_mode": "auto"
+  },
+  "name": "MetalMental Blog",
+  "orientation": "any",
+  "short_name": "MetalMental",
+  "screenshots": [
+    {
+      "src": "/screenshots.webp",
+      "sizes": "1280x720",
+      "type": "image/webp",
+      "form_factor": "wide",
+      "label": "MetalMental Blog"
+    },
+    {
+      "src": "/screenshots.webp",
+      "sizes": "1280x720",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "MetalMental Blog"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "MetalMental Blog",
+      "short_name": "MetalMental",
+      "description": "Open MetalMental Blog",
+      "url": "/",
+      "icons": [
+        {
+          "src": "favicon.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "start_url": "/",
+  "scope": ".",
+  "theme_color": "#7828C8"
+}

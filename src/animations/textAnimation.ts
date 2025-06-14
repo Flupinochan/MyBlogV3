@@ -5,7 +5,7 @@ export interface TextAnimationConfig { }
 // Title.tsx専用のアニメーション
 gsap.registerEffect({
   name: 'textAnimation',
-  extendTimeline: false,
+  extendTimeline: true,
   effect: (_elements: gsap.TweenTarget, _config: TextAnimationConfig = {}) => {
     const mm = gsap.matchMedia();
 

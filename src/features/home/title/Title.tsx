@@ -1,8 +1,8 @@
 import { Flex, Grid, GridCol, Image, Stack } from "@mantine/core";
-import titleImage from "../../assets/home_title.png";
+import titleImage from "../../../assets/home_title.png";
 import titleStyles from "./Title.module.css";
-import indexStyles from "../../index.module.css";
-import CustomAnchor from "../../components/CustomAnchor";
+import indexStyles from "../../../index.module.css";
+import CustomAnchor from "../../../components/CustomAnchor";
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
