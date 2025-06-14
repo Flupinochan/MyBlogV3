@@ -6,16 +6,33 @@ import { NetworkFirst, NetworkOnly } from 'workbox-strategies';
 import { CacheableResponsePlugin } from 'workbox-cacheable-response';
 import { BackgroundSyncPlugin } from 'workbox-background-sync';
 import type { RouteMatchCallback, WorkboxPlugin } from 'workbox-core/types';
-import { clientsClaim } from 'workbox-core';
+import { clientsClaim, setCacheNameDetails } from 'workbox-core';
+import { cleanupOutdatedCaches, precacheAndRoute } from 'workbox-precaching';
+
+declare let self: ServiceWorkerGlobalScope
+
+// precache名
+setCacheNameDetails({
+  prefix: 'metalmental',
+  suffix: 'v0.0.1',
+});
+// 動的キャッシュ名
+const cacheName = `metalmental-get-cache-001`;
 
 // 即座にService Workerを有効化
+self.skipWaiting();
 clientsClaim();
+
+// 古いキャッシュを削除
+cleanupOutdatedCaches();
+
+// vite.config.tsに記載されている静的ファイルをキャッシュ
+precacheAndRoute(self.__WB_MANIFEST);
+
 
 /////////
 // GET //
 /////////
-// キャッシュ名
-const cacheName = 'metalmental-get-cache';
 // キャッシュ対象はGETメソッド
 const matchCallback: RouteMatchCallback = ({ request }) => request.method === 'GET';
 // 3秒以内に応答しなければキャッシュ応答
@@ -42,6 +59,7 @@ registerRoute(
 //////////
 const bgSyncPlugin = new BackgroundSyncPlugin('MetalMentalQueue', {
   maxRetentionTime: 24 * 60, // 24時間保存
+
 });
 const statusPlugin: WorkboxPlugin = {
   // 成功時(HttpStatusCodeが400以上の場合)

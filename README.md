@@ -1,6 +1,6 @@
 # MetalMental Blog
 
-## service worker test
+## local server
 
 ```bash
 npx serve -s dist

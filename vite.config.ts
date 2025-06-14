@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-// import { VitePWA } from 'vite-plugin-pwa'
+import { VitePWA } from 'vite-plugin-pwa'
 
 const ReactCompilerConfig = { target: '18' };
 
@@ -14,6 +14,25 @@ export default defineConfig({
         ],
       },
     }),
+    // https://vite-pwa-org.netlify.app/guide/inject-manifest.html
+    VitePWA({
+      // 開発環境で有効化
+      devOptions: {
+        enabled: true,
+        type: 'module',
+      },
+      // manifest.json/静的ファイルキャッシュ設定
+      strategies: 'injectManifest',
+      srcDir: 'src/service-worker',
+      filename: 'serviceWorker.ts',
+      injectManifest: {
+        globPatterns: ['**/*.{js,css,html,ico,png,jpg,jpeg,svg,woff2,json,yaml,txt,webp}'],
+        globIgnores: ['**/*.gif'],
+        maximumFileSizeToCacheInBytes: 10 * 1024 * 1024,
+      },
+      // service workerの登録設定
+      registerType: 'autoUpdate',
+    })
   ],
   // -ハイフン区切りのclassNameをキャメルケースで利用可能
   css: {
@@ -26,14 +45,10 @@ export default defineConfig({
     rollupOptions: {
       input: {
         react: './index.html',
-        service_worker: './src/service-worker/serviceWorker.ts'
+        // service_worker エントリーは削除（VitePWAが処理）
       },
       output: {
         entryFileNames: (chunkInfo) => {
-          // serviceWorker.tsの場合の出力名、出力先
-          if (chunkInfo.name === 'service_worker') {
-            return 'serviceWorker.js';
-          }
           // それ以外のファイルの出力名、出力先
           return 'assets/[name]-[hash].js';
         }
