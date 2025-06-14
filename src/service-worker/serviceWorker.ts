@@ -57,19 +57,12 @@ registerRoute(
 //////////
 // POST //
 //////////
+// Braveではエラーになる模様
 const bgSyncPlugin = new BackgroundSyncPlugin('MetalMentalQueue', {
   maxRetentionTime: 24 * 60, // 24時間保存
 
 });
 const statusPlugin: WorkboxPlugin = {
-  // 成功時(HttpStatusCodeが400以上の場合)
-  // fetchDidSucceed: async ({ response }) => {
-  //   if (response.status >= 400) {
-  //     throw new Error(`HTTP Error: ${response.status}`);
-  //   }
-  //   return response;
-  // },
-
   // ネットワークエラーなどで例外発生時に実行
   handlerDidError: async () => {
     return new Response(
@@ -85,7 +78,6 @@ const statusPlugin: WorkboxPlugin = {
 registerRoute(
   /.*/, // 正規表現で対象のパスを指定
   new NetworkOnly({
-    networkTimeoutSeconds,
     plugins: [bgSyncPlugin, statusPlugin],
   }),
   'POST'
