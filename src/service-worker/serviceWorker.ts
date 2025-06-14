@@ -14,10 +14,10 @@ declare let self: ServiceWorkerGlobalScope
 // precache名
 setCacheNameDetails({
   prefix: 'metalmental',
-  suffix: 'v0.0.1',
+  suffix: 'v0.0.2',
 });
 // 動的キャッシュ名
-const cacheName = `metalmental-get-cache-001`;
+const cacheName = `metalmental-get-cache-002`;
 
 // 即座にService Workerを有効化
 self.skipWaiting();
