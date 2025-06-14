@@ -45,11 +45,9 @@ export default defineConfig({
     rollupOptions: {
       input: {
         react: './index.html',
-        // service_worker エントリーは削除（VitePWAが処理）
       },
       output: {
         entryFileNames: (chunkInfo) => {
-          // それ以外のファイルの出力名、出力先
           return 'assets/[name]-[hash].js';
         }
       },

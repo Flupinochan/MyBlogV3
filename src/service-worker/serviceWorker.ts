@@ -22,10 +22,8 @@ const cacheName = `metalmental-get-cache-001`;
 // 即座にService Workerを有効化
 self.skipWaiting();
 clientsClaim();
-
 // 古いキャッシュを削除
 cleanupOutdatedCaches();
-
 // vite.config.tsに記載されている静的ファイルをキャッシュ
 precacheAndRoute(self.__WB_MANIFEST);
 

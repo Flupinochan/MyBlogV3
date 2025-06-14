@@ -5,6 +5,7 @@
     "lib": [
       "ESNext",
       "DOM",
+      /* service workerの型を有効 */
       "WebWorker",
     ],
     "module": "ESNext",
