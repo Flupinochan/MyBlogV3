@@ -24,15 +24,15 @@ const Skills = () => {
       <H2 text="Skills" />
       <SkillSection
         title="Frontend"
-        badgesText={["React", "WinUI 3", "PWA"]}
+        badgesText={["Flutter", "React", "PWA", "WPF"]}
         description="多様なデバイスにシームレスに適応するレスポンシブデザインとシステム障害に強いレジリエンス戦略を活用したアプリケーションを作成します"
         svg={<TypeScriptSvg />}
         textColor="#006FEE"
         badgeColor="#001731" />
       <SkillSection
         title="Backend"
-        badgesText={["NestJS", "GraphQL", "LangChain"]}
-        description="Dependency Injectionや抽象化を駆使することで、コードの柔軟性と再利用性を高め、保守性に優れた堅牢なシステムを作成します"
+        badgesText={["NestJS", "Spring Boot", "LangChain"]}
+        description="Clean Architectureでコードの柔軟性と再利用性を高め、保守性に優れた堅牢なシステムを作成します"
         svg={<PythonSvg />}
         textColor="#F5A524"
         badgeColor="#312107" />

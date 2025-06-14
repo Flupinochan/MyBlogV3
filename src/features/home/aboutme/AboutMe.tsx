@@ -28,12 +28,12 @@ const AboutMe = () => {
       <AboutMeSection
         title="Specialty"
         text1="IaCとCI/CDによるサーバレスやコンテナ環境の構築"
-        text2="AWS、GitHub、Supabaseが好き" />
+        text2="最近はAmplifyとFirebaseがメイン" />
       <Space h={10} />
       <AboutMeSection
         title="Hobby"
-        text1="WinUI 3 (WPF) におけるMVVMアプリケーション開発"
-        text2="Google拡張機能の作成" />
+        text1="オフラインに強いアプリケーションの作成"
+        text2="Clean Architectureの勉強" />
     </section>
   )
 }
