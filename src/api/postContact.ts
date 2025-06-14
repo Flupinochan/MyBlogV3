@@ -1,8 +1,7 @@
-import { IContactRequest, IContactResponse } from '../interfaces/ContactInterface';
-import axiosInstance from '../utils/axiosInstance';
+import { IContactRequest } from '../interfaces/ContactInterface';
+import { fetchApi } from '../utils/fetchApiClient';
 
-export const postContact = async (values: IContactRequest): Promise<IContactResponse> => {
-  const response = await axiosInstance.post("/contact", values);
-  const data: IContactResponse = response.data;
-  return data;
+export const postContact = async (values: IContactRequest): Promise<Response> => {
+  const response = await fetchApi("/contact", "POST", values);
+  return response;
 }

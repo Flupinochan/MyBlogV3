@@ -37,3 +37,15 @@ npx tcm src --watch
 ```bash
 git ls-files | grep -i history
 ```
+
+## Service Worker キャッシュ戦略
+
+- Network first, cache second
+- developer
+  - Network
+    - Offline : オフライン状態に設定
+    - Bypass for network : Service Workerのfetchイベントを無効化し、ネットワークから取得
+    - Ctrl + Shift + R
+  - Application
+    - Storage
+      - Usage (Service Workers) からキャッシュサイズを確認

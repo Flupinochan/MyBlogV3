@@ -1,8 +1,8 @@
 import { IBlogVersion } from "../interfaces/BlogVersionInterface";
-import axiosInstance from "../utils/axiosInstance";
+import { fetchApi } from "../utils/fetchApiClient";
 
 export const getBlogVersion = async (): Promise<IBlogVersion[]> => {
-  const response = await axiosInstance.get("/blog-version");
-  const data: IBlogVersion[] = response.data;
+  const response = await fetchApi("/blog-version", "GET");
+  const data: IBlogVersion[] = await response.json();
   return data;
 }

@@ -5,7 +5,7 @@ import { z } from 'zod';
 import { IContactRequest, IContactResponse } from '../../../interfaces/ContactInterface';
 import { useDisclosure } from '@mantine/hooks';
 import { notifications } from '@mantine/notifications';
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import gsap from 'gsap';
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -47,6 +47,7 @@ const Contact = () => {
   });
 
   // リクエスト処理
+  const [isOffline, setIsOffline] = useState<boolean>(false);
   const mutation = useMutation({
     retry: 3,
     mutationFn: postContact,
@@ -61,9 +62,13 @@ const Contact = () => {
       })
       await new Promise(resolve => setTimeout(resolve, 1000));
     },
-    onSuccess: (data: IContactResponse) => {
+    onSuccess: async (response: Response) => {
       form.reset();
-      console.log(data.message);
+      if (response.status === 202) {
+        setIsOffline(true);
+      }
+      const data: IContactResponse = await response.json();
+      console.log(data);
     },
     onError: (error) => {
       console.log(error);
@@ -98,6 +103,7 @@ const Contact = () => {
               <Text size="xl" mah={20}>Thank you for your message!</Text>
               <Text size="xl">(*^_^*)</Text>
               <Image src={modalGif} alt="Thanks Image" />
+              {isOffline && <Text>Offline - will send when connected</Text>}
             </>
           ) : (
             <>
