@@ -5,9 +5,9 @@ import { registerRoute } from 'workbox-routing';
 import { NetworkFirst, NetworkOnly } from 'workbox-strategies';
 import { CacheableResponsePlugin } from 'workbox-cacheable-response';
 import { BackgroundSyncPlugin } from 'workbox-background-sync';
-import type { RouteMatchCallback, WorkboxPlugin } from 'workbox-core/types';
 import { clientsClaim, setCacheNameDetails } from 'workbox-core';
 import { cleanupOutdatedCaches, precacheAndRoute } from 'workbox-precaching';
+import type { RouteMatchCallback, WorkboxPlugin } from 'workbox-core/types';
 
 declare let self: ServiceWorkerGlobalScope
 

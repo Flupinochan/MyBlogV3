@@ -24,9 +24,6 @@
     "@tanstack/react-table": "^8.21.3",
     "@types/imagesloaded": "^4.1.6",
     "aws-amplify": "^6.6.6",
-    "axios": "^1.8.4",
-    "axios-retry": "^4.5.0",
-    "D": "^1.0.0",
     "gsap": "^3.12.7",
     "imagesloaded": "^5.0.0",
     "luxon": "^3.6.1",
@@ -37,7 +34,6 @@
     "react-router-dom": "^7.5.0",
     "swagger-ui": "^5.20.8",
     "swagger-ui-react": "^5.20.8",
-    "workbox-window": "^7.3.0",
     "zod": "^3.24.2"
   },
   "devDependencies": {
