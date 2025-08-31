@@ -1,18 +1,19 @@
-import { Space, Stack } from "@mantine/core"
-import H2 from "../../components/H2";
-import skillStyles from "../home/skills/Skills.module.css";
-import toolStyles from "./Tool.module.css";
-import { useRef } from 'react';
-import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
+import { useGSAP } from "@gsap/react";
+import { Space, Stack } from "@mantine/core";
+import { useQuery } from "@tanstack/react-query";
+import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import GoogleExtension from "./google-extension/GoogleExtension";
-import WindowsApp from "./windows-app/WindowsApp";
+import { useRef } from "react";
+import { getBlogVersion } from "../../api/getBlogVersion";
+import H2 from "../../components/H2";
+import { IBlogVersion } from "../../interfaces/BlogVersionInterface";
+import skillStyles from "../home/skills/Skills.module.css";
 import Api from "./api/Api";
 import BlogVersion from "./blog-version/BlogVersion";
-import { useQuery } from "@tanstack/react-query";
-import { getBlogVersion } from "../../api/getBlogVersion";
-import { IBlogVersion } from "../../interfaces/BlogVersionInterface";
+import GoogleExtension from "./google-extension/GoogleExtension";
+import MobileApp from "./mobile-app/MobileApp";
+import toolStyles from "./Tool.module.css";
+import WindowsApp from "./windows-app/WindowsApp";
 
 const Tool = () => {
   const { data, isSuccess } = useQuery<IBlogVersion[]>({
@@ -22,31 +23,35 @@ const Tool = () => {
   });
 
   const ref = useRef<HTMLDivElement>(null);
-  useGSAP((_context, _contextSafe) => {
-    gsap.effects.fadeIn(ref.current, { scope: ref.current });
-    gsap.effects.scrollMoveXFadeIn(".scrollMoveXFadeIn", { scope: ref.current });
-    ScrollTrigger.refresh();
-  }, { scope: ref, dependencies: [data] });
+  useGSAP(
+    (_context, _contextSafe) => {
+      gsap.effects.fadeIn(ref.current, { scope: ref.current });
+      gsap.effects.scrollMoveXFadeIn(".scrollMoveXFadeIn", {
+        scope: ref.current,
+      });
+      ScrollTrigger.refresh();
+    },
+    { scope: ref, dependencies: [data] },
+  );
 
-  return (
+  return isSuccess ? (
     <section className="fadeIn" ref={ref}>
       <div className={toolStyles.space} />
       <Stack className={skillStyles.section}>
         <H2 text="Tool" />
         <Space h={10} />
         <Stack gap={30}>
+          <MobileApp />
           <GoogleExtension />
           <WindowsApp />
           <Api />
-          {isSuccess ? (
-            <BlogVersion data={data} />
-          ) : (
-            <></>
-          )}
+          <BlogVersion data={data} />
         </Stack>
       </Stack>
     </section>
-  )
-}
+  ) : (
+    <></>
+  );
+};
 
-export default Tool
+export default Tool;

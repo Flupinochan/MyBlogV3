@@ -8,18 +8,35 @@ const GoogleExtension = () => {
       <H4 text="Google Extension" />
       <List className={toolStyles.listMarker} withPadding>
         <ListItem>
-          <Anchor target="_blank" rel="noopener noreferrer" href="https://chromewebstore.google.com/detail/sidepanelsyncmemo/adbfnbnnohodpfgdhcanndcbmhknlpoc?authuser=0&hl=ja" >
+          <Anchor
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://chromewebstore.google.com/detail/selectiontranslator/ckgmmdgflpnffbnkfoamlgfhmafidfmg?authuser=0&hl=ja"
+          >
+            SelectionTranslator
+          </Anchor>
+        </ListItem>
+        <ListItem>
+          <Anchor
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://chromewebstore.google.com/detail/sidepanelsyncmemo/adbfnbnnohodpfgdhcanndcbmhknlpoc?authuser=0&hl=ja"
+          >
             SidePanelSyncMemo
           </Anchor>
         </ListItem>
         <ListItem>
-          <Anchor target="_blank" rel="noopener noreferrer" href="https://chromewebstore.google.com/detail/autoclipboardcopy/paabklfmeagoimlcpkhkpmpnmbgcdkpf?authuser=0&hl=ja" >
+          <Anchor
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://chromewebstore.google.com/detail/autoclipboardcopy/paabklfmeagoimlcpkhkpmpnmbgcdkpf?authuser=0&hl=ja"
+          >
             AutoClipboardCopy
           </Anchor>
         </ListItem>
       </List>
     </Stack>
-  )
-}
+  );
+};
 
-export default GoogleExtension
+export default GoogleExtension;
