@@ -1,12 +1,12 @@
 import { useGSAP } from "@gsap/react";
-import { Anchor, List, ListItem, Space, Stack } from "@mantine/core";
+import { Space, Stack } from "@mantine/core";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
 import H2 from "../../components/H2";
-import H4 from "../../components/H4";
 import skillStyles from "../home/skills/Skills.module.css";
 import toolStyles from "../tool/Tool.module.css";
+import Other from "./other/Other";
 import Profile from "./profile/Profile";
 
 const History = () => {
@@ -30,21 +30,9 @@ const History = () => {
         <Space h={10} />
         <Stack gap={70}>
           <Profile />
+          <Other />
           {/* <Timeline /> */}
         </Stack>
-        <Space h={10} />
-        <H4 text="Other" />
-        <List className={toolStyles.listMarker} withPadding>
-          <ListItem>
-            <Anchor
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://www.credly.com/users/tetsuro-kawagoe/badges#credly"
-            >
-              Credly
-            </Anchor>
-          </ListItem>
-        </List>
       </Stack>
     </section>
   );
