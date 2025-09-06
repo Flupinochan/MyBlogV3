@@ -6,13 +6,14 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
 import { getBlogVersion } from "../../api/getBlogVersion";
 import H2 from "../../components/H2";
-import { IBlogVersion } from "../../interfaces/BlogVersionInterface";
+import type { IBlogVersion } from "../../interfaces/BlogVersionInterface";
 import skillStyles from "../home/skills/Skills.module.css";
 import Api from "./api/Api";
 import BlogVersion from "./blog-version/BlogVersion";
 import GoogleExtension from "./google-extension/GoogleExtension";
 import MobileApp from "./mobile-app/MobileApp";
 import toolStyles from "./Tool.module.css";
+import VscodeExtention from "./vscode-extention/VscodeExtention";
 import WindowsApp from "./windows-app/WindowsApp";
 
 const Tool = () => {
@@ -42,6 +43,7 @@ const Tool = () => {
         <Space h={10} />
         <Stack gap={30}>
           <MobileApp />
+          <VscodeExtention />
           <GoogleExtension />
           <WindowsApp />
           <Api />
