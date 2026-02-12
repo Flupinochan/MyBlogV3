@@ -1,15 +1,13 @@
-import { defineBackend } from '@aws-amplify/backend';
-import { auth } from './auth/resource';
-import { data } from './data/resource';
-import { contactLambda } from './functions/contact/resource';
-import { blogVersionLambda } from './functions/blog-version/resource';
-import { configureApiGateway } from './cdk/apigateway';
+import { defineBackend } from "@aws-amplify/backend";
+import { auth } from "./auth/resource";
+import { configureApiGateway } from "./cdk/apigateway";
+import { blogVersionLambda } from "./functions/blog-version/resource";
+import { contactLambda } from "./functions/contact/resource";
 
 export const backend = defineBackend({
   auth,
-  data,
   contactLambda,
-  blogVersionLambda
+  blogVersionLambda,
 });
 
 configureApiGateway(backend);
